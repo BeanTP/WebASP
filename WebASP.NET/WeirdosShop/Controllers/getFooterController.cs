@@ -7,21 +7,22 @@ using WeirdosShop.Models;
 
 namespace WeirdosShop.Controllers
 {
-    public class getMenuController : Controller
+    public class getFooterController : Controller
     {
         WeirdosShopEntities _db = new WeirdosShopEntities();
-        // GET: GetMenu
+        // GET: getFooter
         public ActionResult Index()
         {
             return View();
         }
-        public ActionResult getMenu()
+
+        public ActionResult getFooter()
         {
-            var v = from t in _db.Menus
-                    where t.hide == true
-                    orderby t.order ascending
-                    select t;
-            return PartialView(v.ToList());
+            var f = from e in _db.Footers
+                    where e.hide == true
+                    orderby e.order ascending
+                    select e;
+            return PartialView(f.ToList());
         }
     }
 }

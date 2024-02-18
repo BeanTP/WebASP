@@ -1,0 +1,66 @@
+﻿@model IEnumerable<WeirdosShop.Models.Footer>
+
+<div class="col-lg-4">
+    <div class="mb-4 footer-logo-wrap">
+        @foreach (var i in Model)
+        {
+            if (i.type == "logo")
+            {
+                <a href="#" class="footer-logo">@i.name</a>
+            }
+        }
+    </div>
+
+    @foreach (var i in Model)
+    {
+        if (i.type == "local")
+        {
+            <p class="mb-4">@i.name: @i.description</p>
+        }
+    }
+
+    <ul class="list-unstyled custom-social">
+        @foreach (var i in Model)
+        {
+            if (i.type == "media")
+            {
+                if (i.name == "FB")
+                {
+                    <li><a href="@i.link"><span class="fa fa-brands fa-facebook-f"></span></a></li>
+                }
+                else
+                {
+                    <li><a href="@i.link"><span class="fa fa-brands fa-instagram"></span></a></li>
+                }
+            }
+        }
+    </ul>
+</div>
+
+<div class="col-lg-8">
+    <div class="row links-wrap">
+        <div class="col-6 col-sm-6 col-md-3">
+            <ul class="list-unstyled">
+                @foreach (var i in Model)
+                {
+                    if (i.type == "policy")
+                    {
+                        <li><a href="#">@i.name</a></li>
+                    }
+                }
+            </ul>
+        </div>
+
+        <div class="col-6 col-sm-6 col-md-3">
+            <ul class="list-unstyled">
+                @foreach (var i in Model)
+                {
+                    if (i.type == "tutor")
+                    {
+                        <li><a href="#">@i.name</a></li>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+</div>
