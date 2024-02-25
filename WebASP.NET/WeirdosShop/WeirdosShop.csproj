@@ -128,11 +128,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\getBannerController.cs" />
     <Compile Include="Controllers\getFooterController.cs" />
     <Compile Include="Controllers\getMenuController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Banner.cs">
+      <DependentUpon>WeirdosShop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Category.cs">
       <DependentUpon>WeirdosShop.tt</DependentUpon>
@@ -189,7 +193,22 @@
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\css\tiny-slider.css" />
+    <Content Include="Content\images\Accessories\hades_tailwind_cap.png" />
+    <Content Include="Content\images\Accessories\logo_socks.png" />
     <Content Include="Content\images\bag.svg" />
+    <Content Include="Content\images\Bags\almighty_wined_backpack.png" />
+    <Content Include="Content\images\Bags\black_block_backpack.png" />
+    <Content Include="Content\images\Bags\lagom_backpack.png" />
+    <Content Include="Content\images\Bags\motivation_grunge_backpack.png" />
+    <Content Include="Content\images\Bags\neoprene_utility_backpack_black.png" />
+    <Content Include="Content\images\Banner\slideshow_2.png" />
+    <Content Include="Content\images\Banner\slideshow_3.png" />
+    <Content Include="Content\images\Bottoms\hades_khaki_cargo_shorts.png" />
+    <Content Include="Content\images\Bottoms\mellow_might_skirt.png" />
+    <Content Include="Content\images\Bottoms\robust_shorts.png" />
+    <Content Include="Content\images\Bottoms\sliver_hypezone_wide_leg_pants.png" />
+    <Content Include="Content\images\Bottoms\tornado_route_pants.png" />
+    <Content Include="Content\images\Bottoms\wavelength_parachute_pants.png" />
     <Content Include="Content\images\bowl-2.png" />
     <Content Include="Content\images\bowl-3.png" />
     <Content Include="Content\images\cart.svg" />
@@ -203,6 +222,17 @@
     <Content Include="Content\images\img-grid-1.jpg" />
     <Content Include="Content\images\img-grid-2.jpg" />
     <Content Include="Content\images\img-grid-3.jpg" />
+    <Content Include="Content\images\Outerwear\aquiline_leather_jacket.png" />
+    <Content Include="Content\images\Outerwear\arbormass_hoodie.png" />
+    <Content Include="Content\images\Outerwear\exddus_symblue_hoodie_zip.png" />
+    <Content Include="Content\images\Outerwear\hades_faded_polyester_jacket.png" />
+    <Content Include="Content\images\Outerwear\hades_racer_vain_jacket.png" />
+    <Content Include="Content\images\Outerwear\lithe_boxy_hoodie.png" />
+    <Content Include="Content\images\Outerwear\looming_zip_jacket.png" />
+    <Content Include="Content\images\Outerwear\major_pieces_jacket.png" />
+    <Content Include="Content\images\Outerwear\resilent_petals_sweater.png" />
+    <Content Include="Content\images\Outerwear\seraphic_pearls_zip_hoodie.png" />
+    <Content Include="Content\images\Outerwear\skewed_hook_hoodie.png" />
     <Content Include="Content\images\person-1.jpg" />
     <Content Include="Content\images\person-1.png" />
     <Content Include="Content\images\person_1.jpg" />
@@ -218,6 +248,15 @@
     <Content Include="Content\images\return.svg" />
     <Content Include="Content\images\sofa.png" />
     <Content Include="Content\images\support.svg" />
+    <Content Include="Content\images\Tops\hades_cerise_bow_tee.png" />
+    <Content Include="Content\images\Tops\hades_cerise_cravat_tee.png" />
+    <Content Include="Content\images\Tops\hades_scralet_stitch_tee.png" />
+    <Content Include="Content\images\Tops\lamp_legend_tee.png" />
+    <Content Include="Content\images\Tops\lodestar_famed_long_sleeve.png" />
+    <Content Include="Content\images\Tops\scuffers_love_polo.png" />
+    <Content Include="Content\images\Tops\segment_raglan_polo.png" />
+    <Content Include="Content\images\Tops\sleepless_saigon_tee.png" />
+    <Content Include="Content\images\Tops\sonorous_tank_top.png" />
     <Content Include="Content\images\truck.svg" />
     <Content Include="Content\images\user.svg" />
     <Content Include="Content\images\why-choose-us-img.jpg" />
@@ -276,6 +315,7 @@
     <Content Include="Views\Shared\_MyLayout.cshtml" />
     <Content Include="Views\GetMenu\getMenu.cshtml" />
     <Content Include="Views\getFooter\getFooter.cshtml" />
+    <Content Include="Views\getBanner\getBanner.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

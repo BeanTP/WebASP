@@ -1,0 +1,12 @@
+﻿@model IEnumerable<WeirdosShop.Models.Banner>
+
+<div class="banner">
+    <div class="container-fluid">
+        @foreach (var e in Model)
+        {
+            <a href="#">
+                <img src="~/Content/images/Banner/@e.img" alt="@e.meta" class="img-fluid">
+            </a>
+        }
+    </div>
+</div>

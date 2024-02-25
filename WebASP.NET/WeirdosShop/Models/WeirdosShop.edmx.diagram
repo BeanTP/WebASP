@@ -11,6 +11,7 @@
         <EntityTypeShape EntityType="WeirdosShopModel.Product" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WeirdosShopModel.sysdiagram" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WeirdosShopModel.Footer" Width="1.5" PointX="4.75" PointY="4.75" />
+        <EntityTypeShape EntityType="WeirdosShopModel.Banner" Width="1.5" PointX="6.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

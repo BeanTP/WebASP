@@ -31,9 +31,13 @@ a {
     font-weight: 600; }
 
 .custom-navbar {
-  background: #3b5d50 !important;
-  padding-top: 20px;
-  padding-bottom: 20px; }
+    background: #000000 !important;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: fixed;
+    width: 100%;
+    height: auto;
+}
   .custom-navbar .navbar-brand {
     font-size: 32px;
     font-weight: 600; }
@@ -95,7 +99,7 @@ a {
       .custom-navbar .custom-navbar-cta li:first-child {
         margin-right: 20px; }
 
-.hero {
+/*.hero {
   background: #3b5d50;
   padding: calc(4rem - 30px) 0 0rem 0; }
   @media (min-width: 768px) {
@@ -156,7 +160,7 @@ a {
       top: -0px; }
       @media (min-width: 1200px) {
         .hero .hero-img-wrap:after {
-          top: -40px; } }
+          top: -40px; } }*/
 
 .btn {
   font-weight: 600;
