@@ -131,6 +131,7 @@
     <Compile Include="Controllers\getBannerController.cs" />
     <Compile Include="Controllers\getFooterController.cs" />
     <Compile Include="Controllers\getMenuController.cs" />
+    <Compile Include="Controllers\getProSectionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -195,7 +196,6 @@
     <Content Include="Content\css\tiny-slider.css" />
     <Content Include="Content\images\Accessories\hades_tailwind_cap.png" />
     <Content Include="Content\images\Accessories\logo_socks.png" />
-    <Content Include="Content\images\bag.svg" />
     <Content Include="Content\images\Bags\almighty_wined_backpack.png" />
     <Content Include="Content\images\Bags\black_block_backpack.png" />
     <Content Include="Content\images\Bags\lagom_backpack.png" />
@@ -209,19 +209,7 @@
     <Content Include="Content\images\Bottoms\sliver_hypezone_wide_leg_pants.png" />
     <Content Include="Content\images\Bottoms\tornado_route_pants.png" />
     <Content Include="Content\images\Bottoms\wavelength_parachute_pants.png" />
-    <Content Include="Content\images\bowl-2.png" />
-    <Content Include="Content\images\bowl-3.png" />
-    <Content Include="Content\images\cart.svg" />
-    <Content Include="Content\images\couch.png" />
     <Content Include="Content\images\cross.svg" />
-    <Content Include="Content\images\dots-green.svg" />
-    <Content Include="Content\images\dots-light.svg" />
-    <Content Include="Content\images\dots-yellow.svg" />
-    <Content Include="Content\images\envelope-outline.svg" />
-    <Content Include="Content\images\favicon.png" />
-    <Content Include="Content\images\img-grid-1.jpg" />
-    <Content Include="Content\images\img-grid-2.jpg" />
-    <Content Include="Content\images\img-grid-3.jpg" />
     <Content Include="Content\images\Outerwear\aquiline_leather_jacket.png" />
     <Content Include="Content\images\Outerwear\arbormass_hoodie.png" />
     <Content Include="Content\images\Outerwear\exddus_symblue_hoodie_zip.png" />
@@ -233,21 +221,6 @@
     <Content Include="Content\images\Outerwear\resilent_petals_sweater.png" />
     <Content Include="Content\images\Outerwear\seraphic_pearls_zip_hoodie.png" />
     <Content Include="Content\images\Outerwear\skewed_hook_hoodie.png" />
-    <Content Include="Content\images\person-1.jpg" />
-    <Content Include="Content\images\person-1.png" />
-    <Content Include="Content\images\person_1.jpg" />
-    <Content Include="Content\images\person_2.jpg" />
-    <Content Include="Content\images\person_3.jpg" />
-    <Content Include="Content\images\person_4.jpg" />
-    <Content Include="Content\images\post-1.jpg" />
-    <Content Include="Content\images\post-2.jpg" />
-    <Content Include="Content\images\post-3.jpg" />
-    <Content Include="Content\images\product-1.png" />
-    <Content Include="Content\images\product-2.png" />
-    <Content Include="Content\images\product-3.png" />
-    <Content Include="Content\images\return.svg" />
-    <Content Include="Content\images\sofa.png" />
-    <Content Include="Content\images\support.svg" />
     <Content Include="Content\images\Tops\hades_cerise_bow_tee.png" />
     <Content Include="Content\images\Tops\hades_cerise_cravat_tee.png" />
     <Content Include="Content\images\Tops\hades_scralet_stitch_tee.png" />
@@ -257,9 +230,6 @@
     <Content Include="Content\images\Tops\segment_raglan_polo.png" />
     <Content Include="Content\images\Tops\sleepless_saigon_tee.png" />
     <Content Include="Content\images\Tops\sonorous_tank_top.png" />
-    <Content Include="Content\images\truck.svg" />
-    <Content Include="Content\images\user.svg" />
-    <Content Include="Content\images\why-choose-us-img.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -316,6 +286,8 @@
     <Content Include="Views\GetMenu\getMenu.cshtml" />
     <Content Include="Views\getFooter\getFooter.cshtml" />
     <Content Include="Views\getBanner\getBanner.cshtml" />
+    <Content Include="Views\getProSection\getCategory.cshtml" />
+    <Content Include="Views\getProSection\getProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

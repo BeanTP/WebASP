@@ -1,0 +1,14 @@
+﻿@model List<WeirdosShop.Models.Product>
+
+@foreach (var i in Model)
+{
+    var total = i.price - i.price * i.sale / 100;
+
+    <img src="~/Content/images/@ViewBag.cate/@i.img" class="img-fluid product-thumbnail">
+    <h3 class="product-title">@i.name.ToUpper()</h3>
+    <strong class="product-price">@total VNĐ</strong>
+
+    <span class="icon-cross">
+        <img src="~/Content/images/cross.svg" class="img-fluid">
+    </span>
+}
