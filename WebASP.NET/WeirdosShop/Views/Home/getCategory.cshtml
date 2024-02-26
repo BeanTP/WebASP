@@ -10,12 +10,12 @@
                 <p><a href="#" class="btn">MORE PRODUCT</a></p>
             </div>
             <!-- End Column 1 -->
-           
+
             @foreach (var i in Model)
             {
                 <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
                     <a class="product-item" href="@ViewBag.meta/@i.meta">
-                        @{Html.RenderAction("getProduct", "getProSection", new { id = i.id, cate = i.name });}
+                        @{Html.RenderAction("getProduct", "Home", new { id = i.id, cate = i.name });}
                     </a>
                 </div>
             }

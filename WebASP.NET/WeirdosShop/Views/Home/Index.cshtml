@@ -1,7 +1,11 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
 }
 
-@{Html.RenderAction("getBanner", "getBanner");}
+<div class="content">
+    @{Html.RenderAction("getBanner", "Home");}
 
-@{Html.RenderAction("getCategory", "getProSection");}
+    @{Html.RenderAction("getCategory", "Home");}
+</div>
