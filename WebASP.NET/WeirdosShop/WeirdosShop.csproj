@@ -130,8 +130,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\getFooterController.cs" />
     <Compile Include="Controllers\getMenuController.cs" />
-    <Compile Include="Controllers\getProSectionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -202,6 +202,7 @@
     <Content Include="Content\images\Bags\neoprene_utility_backpack_black.png" />
     <Content Include="Content\images\Banner\slideshow_2.png" />
     <Content Include="Content\images\Banner\slideshow_3.png" />
+    <Content Include="Content\images\Banner\thongbaotd.png" />
     <Content Include="Content\images\Bottoms\hades_khaki_cargo_shorts.png" />
     <Content Include="Content\images\Bottoms\mellow_might_skirt.png" />
     <Content Include="Content\images\Bottoms\robust_shorts.png" />
@@ -287,6 +288,10 @@
     <Content Include="Views\Home\getBanner.cshtml" />
     <Content Include="Views\Home\getCategory.cshtml" />
     <Content Include="Views\Home\getProduct.cshtml" />
+    <Content Include="Views\Home\getNews.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\getCategory.cshtml" />
+    <Content Include="Views\Product\getAllPro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

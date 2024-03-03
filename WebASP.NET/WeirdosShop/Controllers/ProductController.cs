@@ -7,42 +7,30 @@ using WeirdosShop.Models;
 
 namespace WeirdosShop.Controllers
 {
-    public class HomeController : Controller
+    public class ProductController : Controller
     {
         WeirdosShopEntities _db = new WeirdosShopEntities();
-        public ActionResult Index()
+        // GET: Product
+        public ActionResult Index(string meta)
         {
-            return View();
-        }
-        public ActionResult getBanner()
-        {
-            var b = from t in _db.Banners
-                    where t.hide == true
-                    orderby t.order ascending
+            ViewBag.meta = meta;
+            var e = from t in _db.Categories
+                    where t.meta == meta
                     select t;
-            return PartialView(b.ToList());
+            return View(e.FirstOrDefault());
         }
         public ActionResult getCategory()
-        {   
-            ViewBag.meta = "products";
+        {
             var e = from t in _db.Categories
                     where t.hide == true
                     select t;
             return PartialView(e.ToList());
         }
-        public ActionResult getProduct(long id, string cate)
+        public ActionResult getAllPro(long id, string cate)
         {
             ViewBag.cate = cate;
             var e = from t in _db.Products
                     where t.hide == true && t.categoryid == id
-                    select t;
-
-            return PartialView(e.ToList());
-        }
-        public ActionResult getNews()
-        {
-            var e = from t in _db.News
-                    where t.hide == true 
                     orderby t.order ascending
                     select t;
             return PartialView(e.ToList());

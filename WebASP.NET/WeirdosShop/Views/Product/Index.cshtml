@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Products";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<div class="untree_co-section product-section before-footer-section">
+    <div class="container">
+        <div class="row">
+
+            @if(ViewBag.meta == "all")
+            {
+                Html.RenderAction("getCategory", "Product", new {meta = ViewBag.meta});
+            } 
+            else
+            {
+                Html.RenderAction("getAllPro", "Product", new { id = Model.id, cate = Model.name });
+            }
+
+        </div>
+    </div>
+</div>
+

@@ -13,6 +13,14 @@ namespace WeirdosShop
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute("Products", "{type}/{meta}",
+            new { controller = "Product", action = "Index", meta = UrlParameter.Optional },
+            new RouteValueDictionary
+            {
+                { "type", "products" },
+            },
+            new[] { "WeirdosShop.Controllers" });
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
