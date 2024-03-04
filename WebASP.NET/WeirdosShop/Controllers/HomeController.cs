@@ -41,6 +41,7 @@ namespace WeirdosShop.Controllers
         }
         public ActionResult getNews()
         {
+            ViewBag.meta = "news";
             var e = from t in _db.News
                     where t.hide == true 
                     orderby t.order ascending

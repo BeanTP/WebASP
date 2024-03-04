@@ -21,6 +21,14 @@ namespace WeirdosShop
             },
             new[] { "WeirdosShop.Controllers" });
 
+            routes.MapRoute("News", "{type}/{meta}",
+            new { controller = "News", action = "Index", meta = UrlParameter.Optional },
+            new RouteValueDictionary
+            {
+                { "type", "news" },
+            },
+            new[] { "WeirdosShop.Controllers" });
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
