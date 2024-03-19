@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewBag.Title = Model.name.ToUpper();
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<div class="untree_co-section product-section before-footer-section">
+    <div class="container">
+        @{Html.RenderAction("getCategory", "Product", new { meta = ViewBag.cate });}
+    </div>
+</div>

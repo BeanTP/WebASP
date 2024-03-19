@@ -19,18 +19,39 @@ namespace WeirdosShop.Controllers
                     select t;
             return View(e.FirstOrDefault());
         }
-        public ActionResult getCategory()
+        public ActionResult getCategory(string meta)
         {
+            ViewBag.meta = meta;
             var e = from t in _db.Categories
                     where t.hide == true
                     select t;
             return PartialView(e.ToList());
         }
-        public ActionResult getAllPro(long id, string cate)
+        public ActionResult getAllPro(long id, string meta, string cate)
         {
             ViewBag.cate = cate;
+            ViewBag.meta = meta;
             var e = from t in _db.Products
                     where t.hide == true && t.categoryid == id
+                    orderby t.order ascending
+                    select t;
+            return PartialView(e.ToList());
+        }
+        public ActionResult Detail(string meta, string id)
+        {
+            ViewBag.meta = id;
+            ViewBag.cate = meta;
+            var e = from t in _db.Products
+                    where t.meta == id
+                    select t;
+            return View(e.FirstOrDefault());
+        }
+        public ActionResult getSalePro(long id, string meta, string cate)
+        {
+            ViewBag.cate = cate;
+            ViewBag.meta = meta;
+            var e = from t in _db.Products
+                    where t.hide == true && t.categoryid == id && t.sale != 0
                     orderby t.order ascending
                     select t;
             return PartialView(e.ToList());

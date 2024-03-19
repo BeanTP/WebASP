@@ -7,15 +7,8 @@
         <a class="product-item" href="@ViewBag.meta/@i.meta">
             <img src="~/Content/images/@ViewBag.cate/@i.img" class="img-fluid product-thumbnail">
             <h3 class="product-title">@i.name.ToUpper()</h3>
-
-            @if (i.sale == 0)
-            {
-                <strong class="product-price">@total VNĐ</strong>
-            }
-            else
-            {
-                <strong class="product-price"><span class=" product-sale">-@i.sale</span>% @total VNĐ</strong>
-            }
+            
+            <strong class="product-price"><span class="product-sale">-@i.sale</span>% @total VNĐ</strong>
 
             <span class="icon-cross">
                 <img src="~/Content/images/cross.svg" class="img-fluid">

@@ -1,7 +1,16 @@
 ﻿@model List<WeirdosShop.Models.Category>
 
-
-@foreach (var i in Model)
+@if(ViewBag.meta == "all")
 {
-    Html.RenderAction("getAllPro", "Product", new { id = i.id, cate = i.name });
+    foreach (var i in Model)
+    {
+        Html.RenderAction("getAllPro", "Product", new { id = i.id, meta = i.meta, cate = i.name });
+    }
+}
+else if (ViewBag.meta == "sale")
+{
+    foreach (var i in Model)
+    {
+        Html.RenderAction("getSalePro", "Product", new { id = i.id, meta = i.meta, cate = i.name });
+    }
 }

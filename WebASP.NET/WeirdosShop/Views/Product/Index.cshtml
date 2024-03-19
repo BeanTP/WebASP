@@ -7,13 +7,13 @@
     <div class="container">
         <div class="row">
 
-            @if(ViewBag.meta == "all")
+            @if(ViewBag.meta == "all" || ViewBag.meta == "sale")
             {
                 Html.RenderAction("getCategory", "Product", new {meta = ViewBag.meta});
-            } 
+            }
             else
             {
-                Html.RenderAction("getAllPro", "Product", new { id = Model.id, cate = Model.name });
+                Html.RenderAction("getAllPro", "Product", new { id = Model.id, meta = ViewBag.meta, cate = Model.name });
             }
 
         </div>

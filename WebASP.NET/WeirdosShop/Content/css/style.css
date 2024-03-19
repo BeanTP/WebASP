@@ -31,6 +31,7 @@ a {
     font-weight: 600; }
 
 .custom-navbar {
+    z-index: 1;
     background: #000000 !important;
     padding-top: 10px;
     padding-bottom: 10px;

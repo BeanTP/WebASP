@@ -128,8 +128,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\getFooterController.cs" />
-    <Compile Include="Controllers\getMenuController.cs" />
+    <Compile Include="Controllers\GeneralController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -284,8 +283,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_MyLayout.cshtml" />
-    <Content Include="Views\GetMenu\getMenu.cshtml" />
-    <Content Include="Views\getFooter\getFooter.cshtml" />
     <Content Include="Views\Home\getBanner.cshtml" />
     <Content Include="Views\Home\getCategory.cshtml" />
     <Content Include="Views\Home\getProduct.cshtml" />
@@ -295,6 +292,10 @@
     <Content Include="Views\Product\getAllPro.cshtml" />
     <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\News\getAllNews.cshtml" />
+    <Content Include="Views\General\getMenu.cshtml" />
+    <Content Include="Views\General\getFooter.cshtml" />
+    <Content Include="Views\Product\Detail.cshtml" />
+    <Content Include="Views\Product\getSalePro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
