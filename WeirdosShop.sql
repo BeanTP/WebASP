@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [WeirdosShop]    Script Date: 3/3/2024 12:40:51 PM ******/
+/****** Object:  Database [WeirdosShop]    Script Date: 3/21/2024 10:50:19 PM ******/
 CREATE DATABASE [WeirdosShop]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -84,7 +84,7 @@ ALTER DATABASE [WeirdosShop] SET QUERY_STORE (OPERATION_MODE = READ_WRITE, CLEAN
 GO
 USE [WeirdosShop]
 GO
-/****** Object:  Table [dbo].[Banner]    Script Date: 3/3/2024 12:40:51 PM ******/
+/****** Object:  Table [dbo].[Banner]    Script Date: 3/21/2024 10:50:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -104,7 +104,7 @@ CREATE TABLE [dbo].[Banner](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Category]    Script Date: 3/3/2024 12:40:51 PM ******/
+/****** Object:  Table [dbo].[Category]    Script Date: 3/21/2024 10:50:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -123,7 +123,7 @@ CREATE TABLE [dbo].[Category](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Footer]    Script Date: 3/3/2024 12:40:51 PM ******/
+/****** Object:  Table [dbo].[Footer]    Script Date: 3/21/2024 10:50:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -145,7 +145,7 @@ CREATE TABLE [dbo].[Footer](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Menu]    Script Date: 3/3/2024 12:40:51 PM ******/
+/****** Object:  Table [dbo].[Menu]    Script Date: 3/21/2024 10:50:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -164,7 +164,7 @@ CREATE TABLE [dbo].[Menu](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[News]    Script Date: 3/3/2024 12:40:51 PM ******/
+/****** Object:  Table [dbo].[News]    Script Date: 3/21/2024 10:50:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -185,7 +185,7 @@ CREATE TABLE [dbo].[News](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Product]    Script Date: 3/3/2024 12:40:51 PM ******/
+/****** Object:  Table [dbo].[Product]    Script Date: 3/21/2024 10:50:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -243,9 +243,9 @@ INSERT [dbo].[Footer] ([id], [name], [link], [meta], [hide], [order], [datebegin
 GO
 INSERT [dbo].[Footer] ([id], [name], [link], [meta], [hide], [order], [datebegin], [type], [description], [img]) VALUES (3, N'Store 2', NULL, NULL, 1, 3, NULL, N'local', N'350, Điện Biên Phủ, P.7, Bình Thạnh, TPHCM', NULL)
 GO
-INSERT [dbo].[Footer] ([id], [name], [link], [meta], [hide], [order], [datebegin], [type], [description], [img]) VALUES (4, N'FB', N'facebook.com', NULL, 1, 4, NULL, N'media', NULL, NULL)
+INSERT [dbo].[Footer] ([id], [name], [link], [meta], [hide], [order], [datebegin], [type], [description], [img]) VALUES (4, N'FB', N'https://facebook.com', NULL, 1, 4, NULL, N'media', NULL, NULL)
 GO
-INSERT [dbo].[Footer] ([id], [name], [link], [meta], [hide], [order], [datebegin], [type], [description], [img]) VALUES (5, N'IG', N'instagram.com', NULL, 1, 5, NULL, N'media', NULL, NULL)
+INSERT [dbo].[Footer] ([id], [name], [link], [meta], [hide], [order], [datebegin], [type], [description], [img]) VALUES (5, N'IG', N'https://instagram.com', NULL, 1, 5, NULL, N'media', NULL, NULL)
 GO
 INSERT [dbo].[Footer] ([id], [name], [link], [meta], [hide], [order], [datebegin], [type], [description], [img]) VALUES (6, N'Chính sách sử dụng website', NULL, N'chinh-sach-su-dung-web', 1, 6, NULL, N'policy', NULL, NULL)
 GO
@@ -267,21 +267,21 @@ SET IDENTITY_INSERT [dbo].[Menu] ON
 GO
 INSERT [dbo].[Menu] ([id], [name], [link], [meta], [hide], [order], [datebegin]) VALUES (1, N'Home', NULL, N'home', 1, 1, NULL)
 GO
-INSERT [dbo].[Menu] ([id], [name], [link], [meta], [hide], [order], [datebegin]) VALUES (2, N'Tops', NULL, N'top', 1, 3, NULL)
+INSERT [dbo].[Menu] ([id], [name], [link], [meta], [hide], [order], [datebegin]) VALUES (2, N'Tops', NULL, N'products/top', 1, 3, NULL)
 GO
-INSERT [dbo].[Menu] ([id], [name], [link], [meta], [hide], [order], [datebegin]) VALUES (3, N'Bottoms', NULL, N'bottom', 1, 4, NULL)
+INSERT [dbo].[Menu] ([id], [name], [link], [meta], [hide], [order], [datebegin]) VALUES (3, N'Bottoms', NULL, N'products/bottom', 1, 4, NULL)
 GO
-INSERT [dbo].[Menu] ([id], [name], [link], [meta], [hide], [order], [datebegin]) VALUES (4, N'Outerwear', NULL, N'outerwear', 1, 5, NULL)
+INSERT [dbo].[Menu] ([id], [name], [link], [meta], [hide], [order], [datebegin]) VALUES (4, N'Outerwear', NULL, N'products/outerwear', 1, 5, NULL)
 GO
-INSERT [dbo].[Menu] ([id], [name], [link], [meta], [hide], [order], [datebegin]) VALUES (5, N'Bags', NULL, N'bag', 1, 6, NULL)
+INSERT [dbo].[Menu] ([id], [name], [link], [meta], [hide], [order], [datebegin]) VALUES (5, N'Bags', NULL, N'products/bag', 1, 6, NULL)
 GO
-INSERT [dbo].[Menu] ([id], [name], [link], [meta], [hide], [order], [datebegin]) VALUES (6, N'Accessories', NULL, N'accessories', 1, 7, NULL)
+INSERT [dbo].[Menu] ([id], [name], [link], [meta], [hide], [order], [datebegin]) VALUES (6, N'Accessories', NULL, N'products/accessory', 1, 7, NULL)
 GO
-INSERT [dbo].[Menu] ([id], [name], [link], [meta], [hide], [order], [datebegin]) VALUES (7, N'Sale', NULL, N'sale', 1, 8, NULL)
+INSERT [dbo].[Menu] ([id], [name], [link], [meta], [hide], [order], [datebegin]) VALUES (7, N'Sale', NULL, N'products/sale', 1, 8, NULL)
 GO
-INSERT [dbo].[Menu] ([id], [name], [link], [meta], [hide], [order], [datebegin]) VALUES (8, N'Recruitment', NULL, N'recruitment', 1, 9, NULL)
+INSERT [dbo].[Menu] ([id], [name], [link], [meta], [hide], [order], [datebegin]) VALUES (8, N'Recruitment', NULL, N'news', 1, 9, NULL)
 GO
-INSERT [dbo].[Menu] ([id], [name], [link], [meta], [hide], [order], [datebegin]) VALUES (9, N'All', NULL, N'all', 1, 2, NULL)
+INSERT [dbo].[Menu] ([id], [name], [link], [meta], [hide], [order], [datebegin]) VALUES (9, N'All', NULL, N'products/all', 1, 2, NULL)
 GO
 SET IDENTITY_INSERT [dbo].[Menu] OFF
 GO
@@ -305,11 +305,63 @@ INSERT [dbo].[Product] ([id], [name], [price], [description], [meta], [size], [c
 GO
 INSERT [dbo].[Product] ([id], [name], [price], [description], [meta], [size], [color], [hide], [order], [datebegin], [categoryid], [img], [img1], [img2], [img3], [sale]) VALUES (4, N'lamp legend tee', 100000, NULL, N'lamp_legend_tee', N'xl', N'washed black', 1, 4, NULL, 1, N'lamp_legend_tee.png', NULL, NULL, NULL, 0)
 GO
-INSERT [dbo].[Product] ([id], [name], [price], [description], [meta], [size], [color], [hide], [order], [datebegin], [categoryid], [img], [img1], [img2], [img3], [sale]) VALUES (5, N'lodestar famed long sleeve', 100000, NULL, N'lodestar_famed_long_sleeve', N'xl', N'black', 1, 5, NULL, 1, N'lodestar_famed_long_sleeve.png', NULL, NULL, NULL, 0)
+INSERT [dbo].[Product] ([id], [name], [price], [description], [meta], [size], [color], [hide], [order], [datebegin], [categoryid], [img], [img1], [img2], [img3], [sale]) VALUES (5, N'lodestar famed long sleeve', 100000, NULL, N'lodestar_famed_long_sleeve', N'xl', N'black', 1, 5, NULL, 1, N'lodestar_famed_long_sleeve.png', NULL, NULL, NULL, 20)
 GO
 INSERT [dbo].[Product] ([id], [name], [price], [description], [meta], [size], [color], [hide], [order], [datebegin], [categoryid], [img], [img1], [img2], [img3], [sale]) VALUES (6, N'tornado route pants', 100000, NULL, N'tornado_route_pants', N'xl', N'wash', 1, 1, NULL, 2, N'tornado_route_pants.png', NULL, NULL, NULL, 0)
 GO
 INSERT [dbo].[Product] ([id], [name], [price], [description], [meta], [size], [color], [hide], [order], [datebegin], [categoryid], [img], [img1], [img2], [img3], [sale]) VALUES (7, N'hades racer vain jacket', 100000, NULL, N'hades_racer_vain_jacket', N'xl', N'black', 1, 1, NULL, 3, N'hades_racer_vain_jacket.png', NULL, NULL, NULL, 0)
+GO
+INSERT [dbo].[Product] ([id], [name], [price], [description], [meta], [size], [color], [hide], [order], [datebegin], [categoryid], [img], [img1], [img2], [img3], [sale]) VALUES (8, N'scuffers love polo', 100000, NULL, N'scuffers_love_polo', N'xl', N'white', 1, 6, NULL, 1, N'scuffers_love_polo.png', NULL, NULL, NULL, 0)
+GO
+INSERT [dbo].[Product] ([id], [name], [price], [description], [meta], [size], [color], [hide], [order], [datebegin], [categoryid], [img], [img1], [img2], [img3], [sale]) VALUES (9, N'segment raglan polo', 100000, NULL, N'segment_raglan_polo', N'xl', N'black', 1, 7, NULL, 1, N'segment_raglan_polo.png', NULL, NULL, NULL, 0)
+GO
+INSERT [dbo].[Product] ([id], [name], [price], [description], [meta], [size], [color], [hide], [order], [datebegin], [categoryid], [img], [img1], [img2], [img3], [sale]) VALUES (10, N'sleepless saigon tee', 100000, NULL, N'sleepless_saigon_tee', N'xl', N'white', 1, 8, NULL, 1, N'sleepless_saigon_tee.png', NULL, NULL, NULL, 0)
+GO
+INSERT [dbo].[Product] ([id], [name], [price], [description], [meta], [size], [color], [hide], [order], [datebegin], [categoryid], [img], [img1], [img2], [img3], [sale]) VALUES (11, N'sonorous tank top', 100000, NULL, N'sonorous_tank_top', N'xl', N'brown', 1, 9, NULL, 1, N'sonorous_tank_top.png', NULL, NULL, NULL, 30)
+GO
+INSERT [dbo].[Product] ([id], [name], [price], [description], [meta], [size], [color], [hide], [order], [datebegin], [categoryid], [img], [img1], [img2], [img3], [sale]) VALUES (12, N'hades khaki cargo shorts', 100000, NULL, N'hades_khaki_cargo_shorts', N'xl', N'black', 1, 2, NULL, 2, N'hades_khaki_cargo_shorts.png', NULL, NULL, NULL, 0)
+GO
+INSERT [dbo].[Product] ([id], [name], [price], [description], [meta], [size], [color], [hide], [order], [datebegin], [categoryid], [img], [img1], [img2], [img3], [sale]) VALUES (13, N'mellow might skirt', 100000, NULL, N'mellow_might_skirt', N'xl', N'washed jean', 1, 3, NULL, 2, N'mellow_might_skirt.png', NULL, NULL, NULL, 0)
+GO
+INSERT [dbo].[Product] ([id], [name], [price], [description], [meta], [size], [color], [hide], [order], [datebegin], [categoryid], [img], [img1], [img2], [img3], [sale]) VALUES (14, N'robust shorts', 100000, NULL, N'robust_shorts', N'xl', N'black', 1, 4, NULL, 2, N'robust_shorts.png', NULL, NULL, NULL, 0)
+GO
+INSERT [dbo].[Product] ([id], [name], [price], [description], [meta], [size], [color], [hide], [order], [datebegin], [categoryid], [img], [img1], [img2], [img3], [sale]) VALUES (15, N'sliver hypezone wide leg pants', 100000, NULL, N'sliver_hypezone_wide_leg_pants', N'xl', N'gray', 1, 5, NULL, 2, N'sliver_hypezone_wide_leg_pants.png', NULL, NULL, NULL, 0)
+GO
+INSERT [dbo].[Product] ([id], [name], [price], [description], [meta], [size], [color], [hide], [order], [datebegin], [categoryid], [img], [img1], [img2], [img3], [sale]) VALUES (16, N'wavelength parachute pants', 100000, NULL, N'wavelength_parachute_pants', N'xl', N'black', 1, 6, NULL, 2, N'wavelength_parachute_pants.png', NULL, NULL, NULL, 20)
+GO
+INSERT [dbo].[Product] ([id], [name], [price], [description], [meta], [size], [color], [hide], [order], [datebegin], [categoryid], [img], [img1], [img2], [img3], [sale]) VALUES (17, N'aquiline leather jacket', 100000, NULL, N'aquiline_leather_jacket', N'xl', N'black', 1, 2, NULL, 3, N'aquiline_leather_jacket.png', NULL, NULL, NULL, 0)
+GO
+INSERT [dbo].[Product] ([id], [name], [price], [description], [meta], [size], [color], [hide], [order], [datebegin], [categoryid], [img], [img1], [img2], [img3], [sale]) VALUES (18, N'arbormass hoodie', 100000, NULL, N'arbormass_hoodie', N'xl', N'brown', 1, 3, NULL, 3, N'arbormass_hoodie.png', NULL, NULL, NULL, 0)
+GO
+INSERT [dbo].[Product] ([id], [name], [price], [description], [meta], [size], [color], [hide], [order], [datebegin], [categoryid], [img], [img1], [img2], [img3], [sale]) VALUES (19, N'exddus symblue hoodie zip', 100000, NULL, N'exddus_symblue_hoodie_zip', N'xl', N'white', 1, 4, NULL, 3, N'exddus_symblue_hoodie_zip.png', NULL, NULL, NULL, 0)
+GO
+INSERT [dbo].[Product] ([id], [name], [price], [description], [meta], [size], [color], [hide], [order], [datebegin], [categoryid], [img], [img1], [img2], [img3], [sale]) VALUES (20, N'hades faded polyester jacket', 100000, NULL, N'hades_faded_polyester_jacket', N'xl', N'black', 1, 5, NULL, 3, N'hades_faded_polyester_jacket.png', NULL, NULL, NULL, 0)
+GO
+INSERT [dbo].[Product] ([id], [name], [price], [description], [meta], [size], [color], [hide], [order], [datebegin], [categoryid], [img], [img1], [img2], [img3], [sale]) VALUES (21, N'lithe boxy hoodie', 100000, NULL, N'lithe_boxy_hoodie', N'xl', N'black', 1, 6, NULL, 3, N'lithe_boxy_hoodie.png', NULL, NULL, NULL, 0)
+GO
+INSERT [dbo].[Product] ([id], [name], [price], [description], [meta], [size], [color], [hide], [order], [datebegin], [categoryid], [img], [img1], [img2], [img3], [sale]) VALUES (22, N'looming zip jacket', 100000, NULL, N'looming_zip_jacket', N'xl', N'brown', 1, 7, NULL, 3, N'looming_zip_jacket.png', NULL, NULL, NULL, 0)
+GO
+INSERT [dbo].[Product] ([id], [name], [price], [description], [meta], [size], [color], [hide], [order], [datebegin], [categoryid], [img], [img1], [img2], [img3], [sale]) VALUES (23, N'major pieces jacket', 100000, NULL, N'major_pieces_jacket', N'xl', N'black', 1, 8, NULL, 3, N'major_pieces_jacket.png', NULL, NULL, NULL, 0)
+GO
+INSERT [dbo].[Product] ([id], [name], [price], [description], [meta], [size], [color], [hide], [order], [datebegin], [categoryid], [img], [img1], [img2], [img3], [sale]) VALUES (24, N'resilent petals sweater', 100000, NULL, N'resilent_petals_sweater', N'xl', N'brown', 1, 9, NULL, 3, N'resilent_petals_sweater.png', NULL, NULL, NULL, 0)
+GO
+INSERT [dbo].[Product] ([id], [name], [price], [description], [meta], [size], [color], [hide], [order], [datebegin], [categoryid], [img], [img1], [img2], [img3], [sale]) VALUES (25, N'seraphic pearls zip hoodie', 100000, NULL, N'seraphic_pearls_zip_hoodie', N'xl', N'gray', 1, 10, NULL, 3, N'seraphic_pearls_zip_hoodie.png', NULL, NULL, NULL, 0)
+GO
+INSERT [dbo].[Product] ([id], [name], [price], [description], [meta], [size], [color], [hide], [order], [datebegin], [categoryid], [img], [img1], [img2], [img3], [sale]) VALUES (26, N'skewed hook hoodie', 100000, NULL, N'skewed_hook_hoodie', N'xl', N'black', 1, 11, NULL, 3, N'skewed_hook_hoodie.png', NULL, NULL, NULL, 30)
+GO
+INSERT [dbo].[Product] ([id], [name], [price], [description], [meta], [size], [color], [hide], [order], [datebegin], [categoryid], [img], [img1], [img2], [img3], [sale]) VALUES (27, N'almighty wined backpack', 100000, NULL, N'almighty_wined_backpack', NULL, N'black', 1, 1, NULL, 4, N'almighty_wined_backpack.png', NULL, NULL, NULL, 0)
+GO
+INSERT [dbo].[Product] ([id], [name], [price], [description], [meta], [size], [color], [hide], [order], [datebegin], [categoryid], [img], [img1], [img2], [img3], [sale]) VALUES (28, N'black block backpack', 100000, NULL, N'black_block_backpack', NULL, N'black', 1, 2, NULL, 4, N'black_block_backpack.png', NULL, NULL, NULL, 0)
+GO
+INSERT [dbo].[Product] ([id], [name], [price], [description], [meta], [size], [color], [hide], [order], [datebegin], [categoryid], [img], [img1], [img2], [img3], [sale]) VALUES (29, N'lagom backpack', 100000, NULL, N'lagom_backpack', NULL, N'black', 1, 3, NULL, 4, N'lagom_backpack.png', NULL, NULL, NULL, 0)
+GO
+INSERT [dbo].[Product] ([id], [name], [price], [description], [meta], [size], [color], [hide], [order], [datebegin], [categoryid], [img], [img1], [img2], [img3], [sale]) VALUES (30, N'motivation grunge backpack', 100000, NULL, N'motivation_grunge_backpack', NULL, N'brown', 1, 4, NULL, 4, N'motivation_grunge_backpack.png', NULL, NULL, NULL, 0)
+GO
+INSERT [dbo].[Product] ([id], [name], [price], [description], [meta], [size], [color], [hide], [order], [datebegin], [categoryid], [img], [img1], [img2], [img3], [sale]) VALUES (31, N'neoprene utility backpack black', 100000, NULL, N'neoprene_utility_backpack_black', NULL, N'black', 1, 5, NULL, 4, N'neoprene_utility_backpack_black.png', NULL, NULL, NULL, 10)
+GO
+INSERT [dbo].[Product] ([id], [name], [price], [description], [meta], [size], [color], [hide], [order], [datebegin], [categoryid], [img], [img1], [img2], [img3], [sale]) VALUES (32, N'hades tailwind cap', 100000, NULL, N'hades_tailwind_cap', NULL, N'gray', 1, 1, NULL, 5, N'hades_tailwind_cap.png', NULL, NULL, NULL, 0)
+GO
+INSERT [dbo].[Product] ([id], [name], [price], [description], [meta], [size], [color], [hide], [order], [datebegin], [categoryid], [img], [img1], [img2], [img3], [sale]) VALUES (33, N'logo socks', 100000, NULL, N'logo_socks', NULL, N'white', 1, 2, NULL, 5, N'logo_socks.png', NULL, NULL, NULL, 0)
 GO
 SET IDENTITY_INSERT [dbo].[Product] OFF
 GO
