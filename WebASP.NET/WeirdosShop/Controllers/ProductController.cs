@@ -19,18 +19,20 @@ namespace WeirdosShop.Controllers
                     select t;
             return View(e.FirstOrDefault());
         }
-        public ActionResult getCategory(string meta)
+        public ActionResult getCategory(string meta, string id)
         {
             ViewBag.meta = meta;
+            ViewBag.id = id;
             var e = from t in _db.Categories
                     where t.hide == true
                     select t;
             return PartialView(e.ToList());
         }
-        public ActionResult getAllPro(long id, string meta, string cate)
+        public ActionResult getAllPro(long id, string meta, string cate, string check)
         {
             ViewBag.cate = cate;
             ViewBag.meta = meta;
+            ViewBag.check = check;
             var e = from t in _db.Products
                     where t.hide == true && t.categoryid == id
                     orderby t.order ascending
@@ -39,8 +41,8 @@ namespace WeirdosShop.Controllers
         }
         public ActionResult Detail(string meta, string id)
         {
-            ViewBag.meta = id;
             ViewBag.cate = meta;
+            ViewBag.meta = id;
             var e = from t in _db.Products
                     where t.meta == id
                     select t;

@@ -1,25 +1,151 @@
 ﻿@model List<WeirdosShop.Models.Product>
 
-@foreach (var i in Model)
+@if (ViewBag.check == "detail")
 {
-    var total = i.price - i.price * i.sale / 100;
-    <div class="col-12 col-md-4 col-lg-3 mb-5">
-        <a class="product-item" href="@ViewBag.meta/@i.meta">
-            <img src="~/Content/images/@ViewBag.cate/@i.img" class="img-fluid product-thumbnail">
-            <h3 class="product-title">@i.name.ToUpper()</h3>
+    foreach (var i in Model)
+    {
+        if (i.meta == ViewBag.meta)
+        {
+            var total = i.price - i.price * i.sale / 100;
 
-            @if (i.sale == 0)
-            {
-                <strong class="product-price">@total VNĐ</strong>
-            }
-            else
-            {
-                <strong class="product-price"><span class=" product-sale">-@i.sale</span>% @total VNĐ</strong>
-            }
+            <div class="container-product">
+                <div class="product">
+                    <div class="gallery">
+                        <img src="~/Content/images/@ViewBag.cate/@i.img" id="productImg">
+                        <div class="controls">
+                            <span class="btn-product active"></span>
+                            <span class="btn-product"></span>
+                            <span class="btn-product"></span>
+                        </div>
+                    </div>
+                    <div class="details">
+                        <h1 class="product-item">@i.name.ToUpper()</h1>
+                        @if (i.sale == 0)
+                        {
+                            <h2 class="product-price">@total VNĐ</h2>
+                        }
+                        else
+                        {
+                            <h2 class="product-price"><span class="product-sale">-@i.sale</span>% @total VNĐ</h2>
+                        }
+                        <p class="product-description">
+                           - @i.description
+                        </p>
+                        <form>
+                            <div class="size-select">
+                                <p>Size</p>
+                                <label for="small">
+                                    <input type="radio" name="size" id="small">
+                                    <span>S</span>
+                                </label>
+                                <label for="medium">
+                                    <input type="radio" name="size" id="medium">
+                                    <span>M</span>
+                                </label>
+                                <label for="large">
+                                    <input type="radio" name="size" id="large">
+                                    <span>L</span>
+                                </label>
+                                <label for="x-large">
+                                    <input type="radio" name="size" id="x-large">
+                                    <span>XL</span>
+                                </label>
+                                <label for="xx-large">
+                                    <input type="radio" name="size" id="xx-large">
+                                    <span>XXL</span>
+                                </label>
+                            </div>
+                            <div class="color-select">
+                                <p>Color</p>
+                                <!-- <label for="red">
+                                    <input type="radio" name="color" id="red">
+                                    <span class="color-1"></span>
+                                </label>
+                                <label for="green">
+                                    <input type="radio" name="color" id="green">
+                                    <span class="color-2"></span>
+                                </label>
+                                <label for="blue">
+                                    <input type="radio" name="color" id="blue">
+                                    <span class="color-3"></span>
+                                </label> -->
+                                <label for="black">
+                                    <input type="radio" name="color" id="black">
+                                    <span class="color-4"></span>
+                                </label>
+                            </div>
 
-            <span class="icon-cross">
-                <img src="~/Content/images/cross.svg" class="img-fluid">
-            </span>
-        </a>
-    </div>
+                            <div class="quantity-select">
+                                <p>Số lượng</p>
+                                <input type="number" value="1" min="0">
+                            </div>
+                            <button>MUA NGAY</button>
+                            <div class="brand_notice">
+                                <p>
+                                    Vận chuyển từ 2-3 ngày.<br>
+                                    Thiết kế và sản xuất bởi WEIRDOS.
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                let productImg = document.getElementById("productImg");
+                let btn = document.getElementsByClassName("btn-product");
+
+                btn[0].onclick = function(){
+                    productImg.src = "/Content/images/@ViewBag.cate/@i.img";
+
+                    for(bt of btn){
+                        bt.classList.remove("active");
+                    }
+                    this.classList.add("active");
+                }
+                btn[1].onclick = function(){
+                    productImg.src = "/Content/images/@ViewBag.cate/@i.img1";
+
+                    for(bt of btn){
+                        bt.classList.remove("active");
+                    }
+                    this.classList.add("active");
+                }
+                btn[2].onclick = function(){
+                    productImg.src = "/Content/images/@ViewBag.cate/@i.img2";
+
+                    for(bt of btn){
+                        bt.classList.remove("active");
+                    }
+                    this.classList.add("active");
+                }
+            </script>
+        }
+    }
+}
+else
+{
+    foreach (var i in Model)
+    {
+        var total = i.price - i.price * i.sale / 100;
+        <div class="col-12 col-md-4 col-lg-3 mb-5">
+            <a class="product-item" href="@ViewBag.meta/@i.meta">
+                <img src="~/Content/images/@ViewBag.cate/@i.img" class="img-fluid product-thumbnail">
+                <h3 class="product-title">@i.name.ToUpper()</h3>
+
+                @if (i.sale == 0)
+                {
+                    <strong class="product-price">@total VNĐ</strong>
+                }
+                else
+                {
+                    <strong class="product-price"><span class="product-sale">-@i.sale</span>% @total VNĐ</strong>
+                }
+
+                <span class="icon-cross">
+                    <img src="~/Content/images/cross.svg" class="img-fluid">
+                </span>
+            </a>
+        </div>
+    }
 }

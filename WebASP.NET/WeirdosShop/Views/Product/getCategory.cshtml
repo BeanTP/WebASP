@@ -4,7 +4,7 @@
 {
     foreach (var i in Model)
     {
-        Html.RenderAction("getAllPro", "Product", new { id = i.id, meta = i.meta, cate = i.name });
+        Html.RenderAction("getAllPro", "Product", new { id = i.id, meta = i.meta, cate = i.name, check = ViewBag.meta });
     }
 }
 else if (ViewBag.meta == "sale")
@@ -12,5 +12,15 @@ else if (ViewBag.meta == "sale")
     foreach (var i in Model)
     {
         Html.RenderAction("getSalePro", "Product", new { id = i.id, meta = i.meta, cate = i.name });
+    }
+}
+else
+{
+    foreach (var i in Model)
+    {
+        if(i.meta == ViewBag.meta)
+        {
+            Html.RenderAction("getAllPro", "Product", new { id = i.id, meta = ViewBag.id, cate = i.name, check = "detail" });
+        }
     }
 }

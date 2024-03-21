@@ -6,6 +6,6 @@
 
 <div class="untree_co-section product-section before-footer-section">
     <div class="container">
-        @{Html.RenderAction("getCategory", "Product", new { meta = ViewBag.cate });}
+        @{Html.RenderAction("getCategory", "Product", new { meta = ViewBag.cate, id = ViewBag.meta});}
     </div>
 </div>
