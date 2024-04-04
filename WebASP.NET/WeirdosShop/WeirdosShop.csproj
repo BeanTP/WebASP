@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -46,10 +47,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -128,6 +129,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Controllers\GeneralController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
@@ -174,6 +177,84 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Content\css\demo.css" />
+    <Content Include="Areas\Admin\Content\img\avatars\1.png" />
+    <Content Include="Areas\Admin\Content\img\avatars\5.png" />
+    <Content Include="Areas\Admin\Content\img\avatars\6.png" />
+    <Content Include="Areas\Admin\Content\img\avatars\7.png" />
+    <Content Include="Areas\Admin\Content\img\backgrounds\18.jpg" />
+    <Content Include="Areas\Admin\Content\img\elements\1.jpg" />
+    <Content Include="Areas\Admin\Content\img\elements\11.jpg" />
+    <Content Include="Areas\Admin\Content\img\elements\12.jpg" />
+    <Content Include="Areas\Admin\Content\img\elements\13.jpg" />
+    <Content Include="Areas\Admin\Content\img\elements\17.jpg" />
+    <Content Include="Areas\Admin\Content\img\elements\18.jpg" />
+    <Content Include="Areas\Admin\Content\img\elements\19.jpg" />
+    <Content Include="Areas\Admin\Content\img\elements\2.jpg" />
+    <Content Include="Areas\Admin\Content\img\elements\20.jpg" />
+    <Content Include="Areas\Admin\Content\img\elements\3.jpg" />
+    <Content Include="Areas\Admin\Content\img\elements\4.jpg" />
+    <Content Include="Areas\Admin\Content\img\elements\5.jpg" />
+    <Content Include="Areas\Admin\Content\img\elements\7.jpg" />
+    <Content Include="Areas\Admin\Content\img\favicon\favicon.ico" />
+    <Content Include="Areas\Admin\Content\img\icons\brands\asana.png" />
+    <Content Include="Areas\Admin\Content\img\icons\brands\behance.png" />
+    <Content Include="Areas\Admin\Content\img\icons\brands\dribbble.png" />
+    <Content Include="Areas\Admin\Content\img\icons\brands\facebook.png" />
+    <Content Include="Areas\Admin\Content\img\icons\brands\github.png" />
+    <Content Include="Areas\Admin\Content\img\icons\brands\google.png" />
+    <Content Include="Areas\Admin\Content\img\icons\brands\instagram.png" />
+    <Content Include="Areas\Admin\Content\img\icons\brands\mailchimp.png" />
+    <Content Include="Areas\Admin\Content\img\icons\brands\slack.png" />
+    <Content Include="Areas\Admin\Content\img\icons\brands\twitter.png" />
+    <Content Include="Areas\Admin\Content\img\icons\unicons\cc-primary.png" />
+    <Content Include="Areas\Admin\Content\img\icons\unicons\cc-success.png" />
+    <Content Include="Areas\Admin\Content\img\icons\unicons\cc-warning.png" />
+    <Content Include="Areas\Admin\Content\img\icons\unicons\chart-success.png" />
+    <Content Include="Areas\Admin\Content\img\icons\unicons\chart.png" />
+    <Content Include="Areas\Admin\Content\img\icons\unicons\paypal.png" />
+    <Content Include="Areas\Admin\Content\img\icons\unicons\wallet-info.png" />
+    <Content Include="Areas\Admin\Content\img\icons\unicons\wallet.png" />
+    <Content Include="Areas\Admin\Content\img\illustrations\girl-doing-yoga-light.png" />
+    <Content Include="Areas\Admin\Content\img\illustrations\man-with-laptop-light.png" />
+    <Content Include="Areas\Admin\Content\img\illustrations\page-misc-error-light.png" />
+    <Content Include="Areas\Admin\Content\img\layouts\layout-container-light.png" />
+    <Content Include="Areas\Admin\Content\img\layouts\layout-fluid-light.png" />
+    <Content Include="Areas\Admin\Content\img\layouts\layout-without-menu-light.png" />
+    <Content Include="Areas\Admin\Content\img\layouts\layout-without-navbar-light.png" />
+    <Content Include="Areas\Admin\Content\vendor\css\core.css" />
+    <Content Include="Areas\Admin\Content\vendor\css\pages\page-account-settings.css" />
+    <Content Include="Areas\Admin\Content\vendor\css\pages\page-auth.css" />
+    <Content Include="Areas\Admin\Content\vendor\css\pages\page-icons.css" />
+    <Content Include="Areas\Admin\Content\vendor\css\pages\page-misc.css" />
+    <Content Include="Areas\Admin\Content\vendor\css\theme-default.css" />
+    <Content Include="Areas\Admin\Content\vendor\fonts\boxicons.css" />
+    <Content Include="Areas\Admin\Content\vendor\fonts\boxicons\boxicons.svg" />
+    <Content Include="Areas\Admin\Content\vendor\js\bootstrap.js" />
+    <Content Include="Areas\Admin\Content\vendor\js\helpers.js" />
+    <Content Include="Areas\Admin\Content\vendor\js\menu.js" />
+    <Content Include="Areas\Admin\Content\vendor\libs\apex-charts\apex-charts.css" />
+    <Content Include="Areas\Admin\Content\vendor\libs\apex-charts\apexcharts.js" />
+    <Content Include="Areas\Admin\Content\vendor\libs\highlight\highlight-github.css" />
+    <Content Include="Areas\Admin\Content\vendor\libs\highlight\highlight.css" />
+    <Content Include="Areas\Admin\Content\vendor\libs\highlight\highlight.js" />
+    <Content Include="Areas\Admin\Content\vendor\libs\jquery\jquery.js" />
+    <Content Include="Areas\Admin\Content\vendor\libs\masonry\masonry.js" />
+    <Content Include="Areas\Admin\Content\vendor\libs\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="Areas\Admin\Content\vendor\libs\perfect-scrollbar\perfect-scrollbar.js" />
+    <Content Include="Areas\Admin\Content\vendor\libs\popper\popper.js" />
+    <Content Include="Areas\Admin\Scripts\bootstrap.js" />
+    <Content Include="Areas\Admin\Scripts\config.js" />
+    <Content Include="Areas\Admin\Scripts\dashboards-analytics.js" />
+    <Content Include="Areas\Admin\Scripts\extended-ui-perfect-scrollbar.js" />
+    <Content Include="Areas\Admin\Scripts\form-basic-inputs.js" />
+    <Content Include="Areas\Admin\Scripts\helpers.js" />
+    <Content Include="Areas\Admin\Scripts\main.js" />
+    <Content Include="Areas\Admin\Scripts\menu.js" />
+    <Content Include="Areas\Admin\Scripts\pages-account-settings-account.js" />
+    <Content Include="Areas\Admin\Scripts\ui-modals.js" />
+    <Content Include="Areas\Admin\Scripts\ui-popover.js" />
+    <Content Include="Areas\Admin\Scripts\ui-toasts.js" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -257,6 +338,100 @@
     <Content Include="Models\WeirdosShop.edmx.diagram">
       <DependentUpon>WeirdosShop.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Content\scss\core.scss" />
+    <Content Include="Areas\Admin\Content\scss\pages\page-account-settings.scss" />
+    <Content Include="Areas\Admin\Content\scss\pages\page-auth.scss" />
+    <Content Include="Areas\Admin\Content\scss\pages\page-icons.scss" />
+    <Content Include="Areas\Admin\Content\scss\pages\page-misc.scss" />
+    <Content Include="Areas\Admin\Content\scss\theme-default.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\forms\_floating-labels.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\forms\_form-control.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\forms\_form-range.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\forms\_form-select.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\forms\_input-group.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\forms\_labels.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\forms\_validation.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\mixins\_alert.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\mixins\_badge.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\mixins\_buttons.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\mixins\_caret.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\mixins\_dropdown.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\mixins\_forms.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\mixins\_list-group.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\mixins\_misc.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\mixins\_navs.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\mixins\_pagination.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\mixins\_progress.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\mixins\_table-variants.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\mixins\_toasts.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\_accordion.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\_alert.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\_badge.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\_breadcrumb.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\_button-group.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\_buttons.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\_card.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\_carousel.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\_close.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\_dropdown.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\_forms.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\_functions.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\_include.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\_list-group.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\_mixins.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\_modal.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\_nav.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\_navbar.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\_offcanvas.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\_pagination.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\_popover.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\_progress.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\_reboot.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\_root.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\_spinners.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\_tables.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\_toasts.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\_tooltip.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\_type.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\_utilities-ltr.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\_utilities.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap-extended\_variables.scss" />
+    <Content Include="Areas\Admin\Content\scss\_bootstrap.scss" />
+    <Content Include="Areas\Admin\Content\scss\_colors.scss" />
+    <Content Include="Areas\Admin\Content\scss\_components.scss" />
+    <Content Include="Areas\Admin\Content\scss\_components\mixins\_app-brand.scss" />
+    <Content Include="Areas\Admin\Content\scss\_components\mixins\_avatar.scss" />
+    <Content Include="Areas\Admin\Content\scss\_components\mixins\_footer.scss" />
+    <Content Include="Areas\Admin\Content\scss\_components\mixins\_menu.scss" />
+    <Content Include="Areas\Admin\Content\scss\_components\mixins\_misc.scss" />
+    <Content Include="Areas\Admin\Content\scss\_components\mixins\_navbar.scss" />
+    <Content Include="Areas\Admin\Content\scss\_components\mixins\_text-divider.scss" />
+    <Content Include="Areas\Admin\Content\scss\_components\_app-brand.scss" />
+    <Content Include="Areas\Admin\Content\scss\_components\_avatar.scss" />
+    <Content Include="Areas\Admin\Content\scss\_components\_base.scss" />
+    <Content Include="Areas\Admin\Content\scss\_components\_common.scss" />
+    <Content Include="Areas\Admin\Content\scss\_components\_footer.scss" />
+    <Content Include="Areas\Admin\Content\scss\_components\_include.scss" />
+    <Content Include="Areas\Admin\Content\scss\_components\_layout.scss" />
+    <Content Include="Areas\Admin\Content\scss\_components\_menu.scss" />
+    <Content Include="Areas\Admin\Content\scss\_components\_mixins.scss" />
+    <Content Include="Areas\Admin\Content\scss\_components\_text-divider.scss" />
+    <Content Include="Areas\Admin\Content\scss\_components\_variables.scss" />
+    <Content Include="Areas\Admin\Content\scss\_custom-variables\_bootstrap-extended.scss" />
+    <Content Include="Areas\Admin\Content\scss\_custom-variables\_components.scss" />
+    <Content Include="Areas\Admin\Content\scss\_custom-variables\_libs.scss" />
+    <Content Include="Areas\Admin\Content\scss\_custom-variables\_pages.scss" />
+    <Content Include="Areas\Admin\Content\scss\_custom-variables\_support.scss" />
+    <Content Include="Areas\Admin\Content\scss\_theme\_common.scss" />
+    <Content Include="Areas\Admin\Content\scss\_theme\_theme.scss" />
+    <Content Include="Areas\Admin\Views\Shared\_MyLayout.cshtml" />
+    <Content Include="Areas\Admin\Content\vendor\fonts\boxicons\boxicons.eot" />
+    <Content Include="Areas\Admin\Content\vendor\fonts\boxicons\boxicons.ttf" />
+    <Content Include="Areas\Admin\Content\vendor\fonts\boxicons\boxicons.woff" />
+    <Content Include="Areas\Admin\Content\vendor\fonts\boxicons\boxicons.woff2" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -299,6 +474,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -363,7 +539,10 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

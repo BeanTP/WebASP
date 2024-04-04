@@ -19,7 +19,7 @@ namespace WeirdosShop
             {
                 { "type", "products" },
             },
-            new[] { "WeirdosShop.Controllers" });
+            namespaces: new[] { "WeirdosShop.Controllers" });
 
             routes.MapRoute("Detail", "{type}/{meta}/{id}",
             new { controller = "Product", action = "Detail", meta = UrlParameter.Optional },
@@ -27,7 +27,7 @@ namespace WeirdosShop
             {
                 { "type", "products" },
             },
-            new[] { "WeirdosShop.Controllers" });
+            namespaces: new[] { "WeirdosShop.Controllers" });
 
             routes.MapRoute("News", "{type}/{meta}",
             new { controller = "News", action = "Index", meta = UrlParameter.Optional },
@@ -35,12 +35,13 @@ namespace WeirdosShop
             {
                 { "type", "news" },
             },
-            new[] { "WeirdosShop.Controllers" });
+            namespaces: new[] { "WeirdosShop.Controllers" });
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "WeirdosShop.Controllers" }
             );
         }
     }
