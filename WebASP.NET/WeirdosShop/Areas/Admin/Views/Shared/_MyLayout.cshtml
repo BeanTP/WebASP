@@ -38,7 +38,7 @@
 
     <!-- Page CSS -->
     <!-- Helpers -->
-    <script src="~/Areas/Admin/Scripts/helpers.js"></script>
+    <script src="~/Areas/Admin/Content/vendor/js/helpers.js"></script>
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
@@ -53,7 +53,7 @@
 
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                 <div class="app-brand demo">
-                    <a href="index.html" class="app-brand-link">
+                    <a href="@Url.Action("Index", "Home")" class="app-brand-link">
                         <span class="app-brand-logo demo">
                             <svg width="25"
                                  viewBox="0 0 25 42"
@@ -110,7 +110,7 @@
                 <ul class="menu-inner py-1">
                     <!-- Dashboard -->
                     <li class="menu-item active">
-                        <a href="index.html" class="menu-link">
+                        <a href="@Url.Action("Index", "Home")" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
                             <div data-i18n="Analytics">Dashboard</div>
                         </a>
@@ -153,7 +153,7 @@
                     </li>
 
                     <li class="menu-item">
-                        <a class="menu-link" href="@Url.Action("Index", "Menu")"><i class="menu-icon tf-icons bx bx-layout"></i> Quản lý menu</a>
+                        <a class="menu-link" href="@Url.Action("Index", "Menus")"><i class="menu-icon tf-icons bx bx-layout"></i> Quản lý menu</a>
                     </li>
 
                     <li class="menu-item">
@@ -585,7 +585,7 @@
     <script src="~/Areas/Admin/Content/vendor/js/bootstrap.js"></script>
     <script src="~/Areas/Admin/Content/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
-    <script src="~/Areas/Admin/Scripts/menu.js"></script>
+    <script src="~/Areas/Admin/Content/vendor/js/menu.js"></script>
     <!-- endbuild -->
     <!-- Vendors JS -->
     <script src="~/Areas/Admin/Content/vendor/libs/apex-charts/apexcharts.js"></script>
@@ -598,5 +598,8 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    @RenderSection("_Header", false)
+    @RenderSection("_Footer", false)
 </body>
 </html>

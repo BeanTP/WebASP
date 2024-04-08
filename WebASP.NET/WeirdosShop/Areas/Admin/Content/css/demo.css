@@ -3,6 +3,10 @@
 * File include item demo only specific css only
 ******************************************************************************/
 
+a {
+    color: #000000;
+}
+
 .menu .app-brand.demo {
   height: 64px;
   margin-top: 12px;
@@ -105,3 +109,4 @@
   text-align: center;
   margin-top: 1rem;
 }
+
