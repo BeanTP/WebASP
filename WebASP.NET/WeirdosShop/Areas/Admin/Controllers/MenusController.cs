@@ -81,6 +81,7 @@ namespace WeirdosShop.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,name,link,meta,hide,order,datebegin")] Menu menu)
         {
+            menu.datebegin = DateTime.Now;
             if (ModelState.IsValid)
             {
                 db.Entry(menu).State = EntityState.Modified;
