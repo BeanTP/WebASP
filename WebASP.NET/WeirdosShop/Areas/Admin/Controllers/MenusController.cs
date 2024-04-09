@@ -48,6 +48,7 @@ namespace WeirdosShop.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,name,link,meta,hide,order,datebegin")] Menu menu)
         {
+            menu.datebegin = DateTime.Now;
             if (ModelState.IsValid)
             {
                 db.Menus.Add(menu);
