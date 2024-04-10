@@ -51,7 +51,15 @@
                             @Html.DisplayFor(modelItem => item.meta)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.hide)
+                            @if(item.hide == true)
+                            {
+                                <p class="mb-0">Hiển thị</p>
+                            }
+                            else
+                            {
+                                <p class="mb-0">Ẩn</p>
+                            }
+                            @*@Html.DisplayFor(modelItem => item.hide)*@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.order)
