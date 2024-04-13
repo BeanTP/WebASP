@@ -1,0 +1,100 @@
+﻿@model IEnumerable<WeirdosShop.Models.Footer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_MyLayout.cshtml";
+}
+
+<div class="card">
+    <div class="d-flex justify-content-between">
+        <h5 class="card-header">Chỉnh sửa footer</h5>
+        <p class="card-header">
+            <i class="bx bxs-plus-circle"></i> @Html.ActionLink("Tạo mới", "Create")
+        </p>
+    </div>
+    <div class="table-responsive text-nowrap">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.meta)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.hide)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.datebegin)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.type)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.img)
+                    </th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.meta)
+                        </td>
+                        <td>
+                            @if (item.hide == true)
+                            {
+                                <p class="mb-0">Hiển thị</p>
+                            }
+                            else
+                            {
+                                <p class="mb-0">Ẩn</p>
+                            }
+                            @*@Html.DisplayFor(modelItem => item.hide)*@
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.datebegin)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.type)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.img)
+                        </td>
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <p class="dropdown-item">
+                                        <i class="bx bx-edit-alt me-1"></i> @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.id })
+                                    </p>
+                                    <p class="dropdown-item">
+                                        <i class="bx bx-detail me-1"></i> @Html.ActionLink("Chi tiết", "Details", new { id = item.id })
+                                    </p>
+                                    <p class="dropdown-item">
+                                        <i class="bx bx-trash me-1"></i> @Html.ActionLink("Xóa", "Delete", new { id = item.id })
+                                    </p>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
