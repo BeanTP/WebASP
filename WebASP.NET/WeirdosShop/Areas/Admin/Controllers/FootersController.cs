@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using WeirdosShop.Help;
 using WeirdosShop.Models;
 
 namespace WeirdosShop.Areas.Admin.Controllers
@@ -46,16 +48,30 @@ namespace WeirdosShop.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,name,link,meta,hide,order,datebegin,type,description,img")] Footer footer)
+        [ValidateInput(false)]
+        public ActionResult Create([Bind(Include = "id,name,link,meta,hide,order,datebegin,type,description,img")] Footer footer, HttpPostedFileBase img)
         {
-            footer.datebegin = DateTime.Now;
             if (ModelState.IsValid)
             {
+                var path = "";
+                var filename = "";
+                if (img != null)
+                {
+                    filename = img.FileName;
+                    //path = Path.Combine(Server.MapPath("~/Content/images/Banner"), filename);
+                    //img.SaveAs(path);
+                    footer.img = filename;
+                }
+                else
+                {
+                    footer.img = "hahahehe.jpg";
+                }
+                footer.datebegin = Convert.ToDateTime(DateTime.Now.ToLocalTime());
+                footer.meta = Functions.ConvertToUnSign(footer.name);
                 db.Footers.Add(footer);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(footer);
         }
 
@@ -79,18 +95,40 @@ namespace WeirdosShop.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,name,link,meta,hide,order,datebegin,type,description,img")] Footer footer)
+        [ValidateInput(false)]
+        public ActionResult Edit([Bind(Include = "id,name,link,meta,hide,order,datebegin,type,description,img")] Footer footer, HttpPostedFileBase img)
         {
-            footer.datebegin = DateTime.Now;
+            var path = "";
+            var filename = "";
+            Footer temp = getById(footer.id);
             if (ModelState.IsValid)
             {
-                db.Entry(footer).State = EntityState.Modified;
+                if (img != null)
+                {
+                    filename = img.FileName;
+                    //path = Path.Combine(Server.MapPath("~/Content/images/Banner"), filename);
+                    //img.SaveAs(path);
+                    temp.img = filename;
+                }
+                temp.name = footer.name;
+                temp.link = footer.link;
+                temp.meta = Functions.ConvertToUnSign(temp.name);
+                temp.hide = footer.hide;
+                temp.order = footer.order;
+                temp.datebegin = Convert.ToDateTime(DateTime.Now.ToLocalTime());
+                temp.type = footer.type;
+                temp.description = footer.description;
+                db.Entry(temp).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(footer);
         }
+        public Footer getById(long id)
+        {
+            return db.Footers.Where(x => x.id == id).FirstOrDefault();
 
+        }
         // GET: Admin/Footers/Delete/5
         public ActionResult Delete(int? id)
         {

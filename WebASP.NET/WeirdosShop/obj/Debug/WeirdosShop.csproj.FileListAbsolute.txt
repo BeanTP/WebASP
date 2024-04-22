@@ -81,3 +81,5 @@ C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\bin\E
 C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\bin\EntityFramework.SqlServer.dll
 C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\bin\EntityFramework.xml
 C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\bin\EntityFramework.SqlServer.xml
+C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\bin\CKFinder.dll
+C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\bin\CKFinder.pdb

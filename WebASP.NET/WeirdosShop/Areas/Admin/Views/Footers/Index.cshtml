@@ -17,25 +17,22 @@
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.name)
+                        @Html.DisplayName("Tiêu đề")
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.meta)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.hide)
+                        @Html.DisplayName("Hiển thị")
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.datebegin)
+                        @Html.DisplayName("Thời gian cập nhật")
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.type)
+                        @Html.DisplayName("Loại")
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.description)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.img)
+                        @Html.DisplayName("Chi tiết")
                     </th>
                     <th>Action</th>
                 </tr>
@@ -69,9 +66,6 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.description)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.img)
                         </td>
                         <td>
                             <div class="dropdown">
