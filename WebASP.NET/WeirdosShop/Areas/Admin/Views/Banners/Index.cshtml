@@ -1,13 +1,13 @@
-﻿@model IEnumerable<WeirdosShop.Models.Menu>
+﻿@model IEnumerable<WeirdosShop.Models.Banner>
 
 @{
-    ViewBag.Title = "Menu";
+    ViewBag.Title = "Banners";
     Layout = "~/Areas/Admin/Views/Shared/_MyLayout.cshtml";
 }
 
 <div class="card">
     <div class="d-flex justify-content-between">
-        <h5 class="card-header">Chỉnh sửa menu</h5>
+        <h5 class="card-header">Chỉnh sửa banners</h5>
         <p class="card-header">
             <i class="bx bxs-plus-circle"></i> @Html.ActionLink("Tạo mới", "Create")
         </p>
@@ -20,7 +20,7 @@
                         @Html.DisplayName("Tiêu đề")
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.link)
+                        @Html.DisplayName("Hình banners")
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.meta)
@@ -45,13 +45,13 @@
                             @Html.DisplayFor(modelItem => item.name)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.link)
+                            <img src="~/Content/images/Banner/@item.img" width="100px" />
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.meta)
                         </td>
                         <td>
-                            @if(item.hide == true)
+                            @if (item.hide == true)
                             {
                                 <p class="mb-0">Hiển thị</p>
                             }

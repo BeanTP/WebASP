@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using WeirdosShop.Help;
 using WeirdosShop.Models;
 
 namespace WeirdosShop.Areas.Admin.Controllers
@@ -49,9 +50,9 @@ namespace WeirdosShop.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,name,link,meta,hide,order,datebegin")] Menu menu)
         {
-            menu.datebegin = DateTime.Now;
             if (ModelState.IsValid)
             {
+                menu.datebegin = Convert.ToDateTime(DateTime.Now.ToLocalTime());
                 db.Menus.Add(menu);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,9 +83,9 @@ namespace WeirdosShop.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,name,link,meta,hide,order,datebegin")] Menu menu)
         {
-            menu.datebegin = DateTime.Now;
             if (ModelState.IsValid)
             {
+                menu.datebegin = Convert.ToDateTime(DateTime.Now.ToLocalTime());
                 db.Entry(menu).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
