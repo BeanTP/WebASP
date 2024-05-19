@@ -18,7 +18,7 @@ namespace WeirdosShop.Controllers
                     where i.hide == true && i.meta == meta
                     orderby i.order ascending
                     select i;
-            return View(e.FirstOrDefault());
+            return View(e.ToList());
         }
         public ActionResult getAllNews()
         {

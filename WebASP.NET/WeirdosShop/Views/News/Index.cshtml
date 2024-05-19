@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<WeirdosShop.Models.News>
+@{
     ViewBag.Title = "News";
     Layout = "~/Views/Shared/_MyLayout.cshtml";
 }
@@ -6,16 +7,26 @@
 <div class="blog-section">
     <div class="container">
 
-        <div class="row">
-            @if(ViewBag.meta == null)
+        @if (ViewBag.meta == null)
+        {
+            <div class="row">
+                @{Html.RenderAction("getAllNews", "News");}
+            </div>
+        }
+        else
+        {
+            foreach (var i in Model)
             {
-                Html.RenderAction("getAllNews", "News");
-            } 
-            else
-            {
-                <h3>@Model</h3>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="fw-bold">@i.name.ToUpper()</h1>
+                        <p class="text-muted">@i.datebegin</p>
+                        <h4>@i.description</h4>
+                        <img src="~/Content/images/Banner/@i.img" class="img-fluid mb-4" alt="News Image">
+                        <p>@i.detail</p>
+                    </div>
+                </div>
             }
-        </div>
-
+        }
     </div>
 </div>
