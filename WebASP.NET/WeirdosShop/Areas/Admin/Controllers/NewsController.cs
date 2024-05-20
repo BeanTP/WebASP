@@ -8,47 +8,48 @@ using System.Web;
 using System.Web.Mvc;
 using WeirdosShop.Models;
 using WeirdosShop.Help;
+using System.Reflection;
 
 namespace WeirdosShop.Areas.Admin.Controllers
 {
-    public class BannersController : Controller
+    public class NewsController : Controller
     {
         private WeirdosShopEntities db = new WeirdosShopEntities();
 
-        // GET: Admin/Banners
+        // GET: Admin/News
         public ActionResult Index()
         {
-            return View(db.Banners.ToList());
+            return View(db.News.ToList());
         }
 
-        // GET: Admin/Banners/Details/5
+        // GET: Admin/News/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Banner banner = db.Banners.Find(id);
-            if (banner == null)
+            News news = db.News.Find(id);
+            if (news == null)
             {
                 return HttpNotFound();
             }
-            return View(banner);
+            return View(news);
         }
 
-        // GET: Admin/Banners/Create
+        // GET: Admin/News/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Admin/Banners/Create
+        // POST: Admin/News/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Create([Bind(Include = "id,name,img,link,meta,hide,order,datebegin")] Banner banner, HttpPostedFileBase img)
+        public ActionResult Create([Bind(Include = "id,name,img,description,detail,meta,hide,order,datebegin")] News news, HttpPostedFileBase img)
         {
             if (ModelState.IsValid)
             {
@@ -58,48 +59,48 @@ namespace WeirdosShop.Areas.Admin.Controllers
                     filename = img.FileName;
                     //path = Path.Combine(Server.MapPath("~/Content/images/Banner"), filename);
                     //img.SaveAs(path);
-                    banner.img = filename;
+                    news.img = filename;
                 }
                 else
                 {
-                    banner.img = "hahahehe.jpg";
+                    news.img = "hahahehe.jpg";
                 }
-                banner.datebegin = Convert.ToDateTime(DateTime.Now.ToLocalTime());
-                db.Banners.Add(banner);
+                news.datebegin = Convert.ToDateTime(DateTime.Now.ToLocalTime());
+                db.News.Add(news);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(banner);
+            return View(news);
         }
 
-        // GET: Admin/Banners/Edit/5
+        // GET: Admin/News/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Banner banner = db.Banners.Find(id);
-            if (banner == null)
+            News news = db.News.Find(id);
+            if (news == null)
             {
                 return HttpNotFound();
             }
-            return View(banner);
+            return View(news);
         }
 
-        // POST: Admin/Banners/Edit/5
+        // POST: Admin/News/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Edit([Bind(Include = "id,name,img,link,meta,hide,order,datebegin")] Banner banner, HttpPostedFileBase img)
+        public ActionResult Edit([Bind(Include = "id,name,img,description,detail,meta,hide,order,datebegin")] News news, HttpPostedFileBase img)
         {
             if (ModelState.IsValid)
             {
                 var filename = "";
-                Banner temp = getById(banner.id);
+                News temp = getById(news.id);
                 if (img != null)
                 {
                     filename = img.FileName;
@@ -107,45 +108,46 @@ namespace WeirdosShop.Areas.Admin.Controllers
                     //img.SaveAs(path);
                     temp.img = filename;
                 }
-                temp.name = banner.name;
-                temp.link = banner.link;
-                temp.meta = banner.meta;
-                temp.hide = banner.hide;
-                temp.order = banner.order;
+                temp.name = news.name;
+                temp.meta = news.meta;
+                temp.description = news.description;
+                temp.detail = news.detail;
+                temp.order = news.order;
+                temp.hide = news.hide;
                 temp.datebegin = Convert.ToDateTime(DateTime.Now.ToLocalTime());
                 db.Entry(temp).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(banner);
+            return View(news);
         }
-        public Banner getById(long id)
+        public News getById(long id)
         {
-            return db.Banners.Where(x => x.id == id).FirstOrDefault();
+            return db.News.Where(x => x.id == id).FirstOrDefault();
 
         }
-        // GET: Admin/Banners/Delete/5
+        // GET: Admin/News/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Banner banner = db.Banners.Find(id);
-            if (banner == null)
+            News news = db.News.Find(id);
+            if (news == null)
             {
                 return HttpNotFound();
             }
-            return View(banner);
+            return View(news);
         }
 
-        // POST: Admin/Banners/Delete/5
+        // POST: Admin/News/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Banner banner = db.Banners.Find(id);
-            db.Banners.Remove(banner);
+            News news = db.News.Find(id);
+            db.News.Remove(news);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

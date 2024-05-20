@@ -1,13 +1,13 @@
-﻿@model IEnumerable<WeirdosShop.Models.Footer>
+﻿@model IEnumerable<WeirdosShop.Models.News>
 
 @{
-    ViewBag.Title = "Footers";
+    ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_MyLayout.cshtml";
 }
 
 <div class="card">
     <div class="d-flex justify-content-between">
-        <h5 class="card-header">Quản lý footer</h5>
+        <h5 class="card-header">Chỉnh sửa tin tức</h5>
         <p class="card-header">
             <i class="bx bxs-plus-circle"></i> @Html.ActionLink("Tạo mới", "Create")
         </p>
@@ -20,19 +20,19 @@
                         @Html.DisplayName("Tiêu đề")
                     </th>
                     <th>
+                        @Html.DisplayName("Hình ảnh")
+                    </th>
+                    <th>
                         @Html.DisplayNameFor(model => model.meta)
                     </th>
                     <th>
                         @Html.DisplayName("Hiển thị")
                     </th>
                     <th>
+                        @Html.DisplayName("Thứ tự hiển thị")
+                    </th>
+                    <th>
                         @Html.DisplayName("Thời gian cập nhật")
-                    </th>
-                    <th>
-                        @Html.DisplayName("Loại")
-                    </th>
-                    <th>
-                        @Html.DisplayName("Chi tiết")
                     </th>
                     <th>Action</th>
                 </tr>
@@ -43,6 +43,9 @@
                     <tr>
                         <td>
                             @Html.DisplayFor(modelItem => item.name)
+                        </td>
+                        <td>
+                            <img src="~/Content/images/Banner/@item.img" width="100px" />
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.meta)
@@ -56,16 +59,12 @@
                             {
                                 <p class="mb-0">Ẩn</p>
                             }
-                            @*@Html.DisplayFor(modelItem => item.hide)*@
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.order)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.datebegin)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.type)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.description)
                         </td>
                         <td>
                             <div class="dropdown">
@@ -91,4 +90,3 @@
         </table>
     </div>
 </div>
-

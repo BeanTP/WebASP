@@ -1,11 +1,11 @@
-﻿@model WeirdosShop.Models.Footer
+﻿@model WeirdosShop.Models.News
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Create";
     Layout = "~/Areas/Admin/Views/Shared/_MyLayout.cshtml";
 }
 
-@using (Html.BeginForm("Edit", "Footers", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "News", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -14,10 +14,9 @@
         <div class="col-xxl">
             <div class="card mb-4">
                 <div class="card-header align-items-center justify-content-between">
-                    <h4 class="mb-0">Chỉnh sửa footer</h4>
+                    <h4 class="mb-0">Tạo mới Tin tức</h4>
                 </div>
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                @Html.HiddenFor(model => model.id)
                 <div class="card-body">
                     <form>
                         <div class="row mb-3">
@@ -28,25 +27,27 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            @Html.LabelFor(model => model.link, htmlAttributes: new { @class = "col-sm-2 col-form-label" })
-                            <div class="col-sm-10">
-                                @Html.EditorFor(model => model.link, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.link, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <div class="row mb-3">
                             @Html.LabelFor(model => model.meta, htmlAttributes: new { @class = "col-sm-2 col-form-label" })
                             <div class="col-sm-10">
-                                @Html.EditorFor(model => model.meta, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.meta, "", new { @class = "text-danger" })
+                                <div class="input-group input-group-merge">
+                                    @Html.EditorFor(model => model.meta, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.meta, "", new { @class = "text-danger" })
+                                </div>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            @Html.Label("Hiển thị", htmlAttributes: new { @class = "col-sm-2 col-form-label" })
+                            @Html.Label("Tóm tắt", htmlAttributes: new { @class = "col-sm-2 col-form-label" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            @Html.Label("Chi tiết", htmlAttributes: new { @class = "col-sm-2 col-form-label" })
                             <div class="col-sm-10">
-                                @{ bool hide = (Model.hide.GetValueOrDefault(false) ? true : false); }
-                                @Html.CheckBoxFor(model => hide, new { style = "margin: -1px 5px" })
-                                @Html.ValidationMessageFor(model => model.hide, "", new { @class = "text-danger" })
+                                @*@Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })*@
+                                @Html.TextAreaFor(model => model.detail)
+                                @Html.ValidationMessageFor(model => model.detail, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -57,36 +58,26 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            @Html.Label("Loại", htmlAttributes: new { @class = "col-sm-2 col-form-label" })
+                            @Html.Label("Hiển thị", htmlAttributes: new { @class = "col-sm-2 col-form-label" })
                             <div class="col-sm-10">
-                                @Html.EditorFor(model => model.type, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.type, "", new { @class = "text-danger" })
+                                <div class="checkbox">
+                                    @{ bool hide = true; }
+                                    @Html.CheckBoxFor(model => hide, new { style = "margin: -1px 5px" })
+                                    @Html.ValidationMessageFor(model => model.hide, "", new { @class = "text-danger" })
+                                </div>
                             </div>
                         </div>
-
-                        <div class="row mb-3">
-                            @Html.Label("Chi tiết", htmlAttributes: new { @class = "col-sm-2 col-form-label" })
-                            <div class="col-sm-10">
-                                @*@Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })*@
-                                @Html.TextAreaFor(model => model.description)
-                                @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
                         <div class="row mb-3">
                             @Html.Label("Hình minh họa", htmlAttributes: new { @class = "col-sm-2 col-form-label" })
-                            <div class="col-sm-9">
+                            <div class="col-sm-10">
                                 @*@Html.EditorFor(model => model.img, new { htmlAttributes = new { @class = "form-control" } })*@
                                 <input type="file" name="img" id="img" accept=".jpg, .png, .svg, .gif, .jpeg, .bmp" />
                                 @Html.ValidationMessageFor(model => model.img, "", new { @class = "text-danger" })
                             </div>
-                            <div class="col-sm-1">
-                                <img src="~/Content/images/Banner/@Model.img" width="100px" />
-                            </div>
                         </div>
                         <div class="row justify-content-end">
                             <div class="col-sm-10">
-                                <input type="submit" value="Save" class="btn btn-primary" />
+                                <input type="submit" value="Create" class="btn btn-primary" />
                             </div>
                             <div class="col-sm-10 mt-2">
                                 @Html.ActionLink("Quay lại", "Index")
@@ -103,8 +94,8 @@
     <script src="~/Areas/Admin/Content/ckfinder/ckfinder.js"></script>
     <script src="~/Areas/Admin/Content/ckeditor/ckeditor.js"></script>
     <script type="text/javascript">
-        var editor = CKEDITOR.replace("description");
-        var editor = CKEDITOR.replace("description", { height: '600px' });
+        var editor = CKEDITOR.replace("detail");
+        var editor = CKEDITOR.replace("detail", { height: '600px' });
         customConfig: '~/Areas/Admin/Content/ckeditor/config.js'
     </script>
     <script>
