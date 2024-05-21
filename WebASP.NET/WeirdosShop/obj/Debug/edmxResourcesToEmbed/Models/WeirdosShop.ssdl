@@ -13,6 +13,28 @@
     <Property Name="order" Type="int" />
     <Property Name="datebegin" Type="smalldatetime" />
   </EntityType>
+  <EntityType Name="Cart">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="namecus" Type="nvarchar" MaxLength="100" />
+    <Property Name="addresscus" Type="nvarchar(max)" />
+    <Property Name="phonenum" Type="nchar" MaxLength="15" />
+    <Property Name="datebegin" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="Cart_detail">
+    <Key>
+      <PropertyRef Name="cartid" />
+      <PropertyRef Name="productid" />
+    </Key>
+    <Property Name="cartid" Type="int" Nullable="false" />
+    <Property Name="productid" Type="int" Nullable="false" />
+    <Property Name="quantity" Type="int" />
+    <Property Name="sale" Type="int" />
+    <Property Name="total" Type="float" />
+    <Property Name="status" Type="int" />
+  </EntityType>
   <EntityType Name="Category">
     <Key>
       <PropertyRef Name="id" />
@@ -97,13 +119,63 @@
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
+  <Association Name="FK_Cart_detail_Cart1">
+    <End Role="Cart" Type="Self.Cart" Multiplicity="1" />
+    <End Role="Cart_detail" Type="Self.Cart_detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cart">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Cart_detail">
+        <PropertyRef Name="cartid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cart_detail_Product1">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Cart_detail" Type="Self.Cart_detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Cart_detail">
+        <PropertyRef Name="productid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="categoryid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="WeirdosShopModelStoreContainer">
     <EntitySet Name="Banner" EntityType="Self.Banner" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cart_detail" EntityType="Self.Cart_detail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Footer" EntityType="Self.Footer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Cart_detail_Cart1" Association="Self.FK_Cart_detail_Cart1">
+      <End Role="Cart" EntitySet="Cart" />
+      <End Role="Cart_detail" EntitySet="Cart_detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cart_detail_Product1" Association="Self.FK_Cart_detail_Product1">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Cart_detail" EntitySet="Cart_detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

@@ -12,32 +12,20 @@ namespace WeirdosShop.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Product
+    public partial class Cart
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Product()
+        public Cart()
         {
             this.Cart_detail = new HashSet<Cart_detail>();
         }
     
         public int id { get; set; }
-        public string name { get; set; }
-        public Nullable<double> price { get; set; }
-        public string description { get; set; }
-        public string meta { get; set; }
-        public string size { get; set; }
-        public string color { get; set; }
-        public Nullable<bool> hide { get; set; }
-        public Nullable<int> order { get; set; }
         public Nullable<System.DateTime> datebegin { get; set; }
-        public Nullable<int> categoryid { get; set; }
-        public string img { get; set; }
-        public string img1 { get; set; }
-        public string img2 { get; set; }
-        public string img3 { get; set; }
-        public Nullable<int> sale { get; set; }
+        public string namecus { get; set; }
+        public string addresscus { get; set; }
+        public string phonenum { get; set; }
     
-        public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cart_detail> Cart_detail { get; set; }
     }

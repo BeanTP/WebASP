@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WeirdosShop.Models.News>
+﻿@model IEnumerable<WeirdosShop.Models.Category>
 
 @{
     ViewBag.Title = "Index";
@@ -7,7 +7,7 @@
 
 <div class="card">
     <div class="d-flex justify-content-between">
-        <h5 class="card-header">Quản lý tin tức</h5>
+        <h5 class="card-header">Quản lý categories</h5>
         <p class="card-header">
             <i class="bx bxs-plus-circle"></i> @Html.ActionLink("Tạo mới", "Create")
         </p>
@@ -17,10 +17,10 @@
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayName("Tiêu đề")
+                        @Html.DisplayName("Loại sản phẩm")
                     </th>
                     <th>
-                        @Html.DisplayName("Hình ảnh")
+                        @Html.DisplayNameFor(model => model.link)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.meta)
@@ -29,7 +29,7 @@
                         @Html.DisplayName("Hiển thị")
                     </th>
                     <th>
-                        @Html.DisplayName("Thứ tự hiển thị")
+                        @Html.DisplayName("Thứ tự")
                     </th>
                     <th>
                         @Html.DisplayName("Thời gian cập nhật")
@@ -45,7 +45,7 @@
                             @Html.DisplayFor(modelItem => item.name)
                         </td>
                         <td>
-                            <img src="~/Content/images/Banner/@item.img" width="100px" />
+                            @Html.DisplayFor(modelItem => item.link)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.meta)

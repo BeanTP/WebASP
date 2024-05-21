@@ -105,5 +105,28 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Carts">
+      <EntityTypeMapping TypeName="WeirdosShopModel.Cart">
+        <MappingFragment StoreEntitySet="Cart">
+          <ScalarProperty Name="phonenum" ColumnName="phonenum" />
+          <ScalarProperty Name="addresscus" ColumnName="addresscus" />
+          <ScalarProperty Name="namecus" ColumnName="namecus" />
+          <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cart_detail">
+      <EntityTypeMapping TypeName="WeirdosShopModel.Cart_detail">
+        <MappingFragment StoreEntitySet="Cart_detail">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="sale" ColumnName="sale" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="productid" ColumnName="productid" />
+          <ScalarProperty Name="cartid" ColumnName="cartid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

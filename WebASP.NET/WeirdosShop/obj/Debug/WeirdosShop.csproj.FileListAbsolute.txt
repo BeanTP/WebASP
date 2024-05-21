@@ -51,6 +51,9 @@ C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\bin\r
 C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\bin\roslyn\VBCSCompiler.exe
 C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\bin\Antlr3.Runtime.dll
+C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\bin\CKFinder.dll
+C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\bin\EntityFramework.dll
+C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\bin\EntityFramework.SqlServer.dll
 C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\bin\Newtonsoft.Json.dll
@@ -62,6 +65,9 @@ C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\bin\S
 C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\bin\System.Web.WebPages.dll
 C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\bin\System.Web.WebPages.Razor.dll
 C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\bin\WebGrease.dll
+C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\bin\CKFinder.pdb
+C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\bin\EntityFramework.xml
+C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\bin\EntityFramework.SqlServer.xml
 C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\bin\System.Web.Helpers.xml
 C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\bin\System.Web.Mvc.xml
 C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\bin\System.Web.Optimization.xml
@@ -77,9 +83,3 @@ C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\obj\D
 C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\obj\Debug\WeirdosShop.csproj.CopyComplete
 C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\obj\Debug\WeirdosShop.dll
 C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\obj\Debug\WeirdosShop.pdb
-C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\bin\EntityFramework.dll
-C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\bin\EntityFramework.SqlServer.dll
-C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\bin\EntityFramework.xml
-C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\bin\EntityFramework.SqlServer.xml
-C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\bin\CKFinder.dll
-C:\Users\HAO NAM\WorkSpace\Công nghệ .Net\WebASP\WebASP.NET\WeirdosShop\bin\CKFinder.pdb

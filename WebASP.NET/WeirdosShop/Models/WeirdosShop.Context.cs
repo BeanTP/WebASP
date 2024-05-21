@@ -32,5 +32,7 @@ namespace WeirdosShop.Models
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Footer> Footers { get; set; }
         public virtual DbSet<Banner> Banners { get; set; }
+        public virtual DbSet<Cart> Carts { get; set; }
+        public virtual DbSet<Cart_detail> Cart_detail { get; set; }
     }
 }

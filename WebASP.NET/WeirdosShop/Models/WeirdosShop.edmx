@@ -18,6 +18,28 @@
           <Property Name="order" Type="int" />
           <Property Name="datebegin" Type="smalldatetime" />
         </EntityType>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="namecus" Type="nvarchar" MaxLength="100" />
+          <Property Name="addresscus" Type="nvarchar(max)" />
+          <Property Name="phonenum" Type="nchar" MaxLength="15" />
+          <Property Name="datebegin" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="Cart_detail">
+          <Key>
+            <PropertyRef Name="cartid" />
+            <PropertyRef Name="productid" />
+          </Key>
+          <Property Name="cartid" Type="int" Nullable="false" />
+          <Property Name="productid" Type="int" Nullable="false" />
+          <Property Name="quantity" Type="int" />
+          <Property Name="sale" Type="int" />
+          <Property Name="total" Type="float" />
+          <Property Name="status" Type="int" />
+        </EntityType>
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="id" />
@@ -102,14 +124,64 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <Association Name="FK_Cart_detail_Cart1">
+          <End Role="Cart" Type="Self.Cart" Multiplicity="1" />
+          <End Role="Cart_detail" Type="Self.Cart_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cart">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Cart_detail">
+              <PropertyRef Name="cartid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cart_detail_Product1">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Cart_detail" Type="Self.Cart_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Cart_detail">
+              <PropertyRef Name="productid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="categoryid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="WeirdosShopModelStoreContainer">
           <EntitySet Name="Banner" EntityType="Self.Banner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cart_detail" EntityType="Self.Cart_detail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Footer" EntityType="Self.Footer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Cart_detail_Cart1" Association="Self.FK_Cart_detail_Cart1">
+            <End Role="Cart" EntitySet="Cart" />
+            <End Role="Cart_detail" EntitySet="Cart_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cart_detail_Product1" Association="Self.FK_Cart_detail_Product1">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Cart_detail" EntitySet="Cart_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -126,6 +198,7 @@
           <Property Name="hide" Type="Boolean" />
           <Property Name="order" Type="Int32" />
           <Property Name="datebegin" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Products" Relationship="WeirdosShopModel.FK_Product_Category" FromRole="Category" ToRole="Product" />
         </EntityType>
         <EntityType Name="Menu">
           <Key>
@@ -173,6 +246,8 @@
           <Property Name="img2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="img3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="sale" Type="Int32" />
+          <NavigationProperty Name="Category" Relationship="WeirdosShopModel.FK_Product_Category" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="Cart_detail" Relationship="WeirdosShopModel.FK_Cart_detail_Product1" FromRole="Product" ToRole="Cart_detail" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -192,6 +267,20 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Footers" EntityType="WeirdosShopModel.Footer" />
           <EntitySet Name="Banners" EntityType="WeirdosShopModel.Banner" />
+          <EntitySet Name="Carts" EntityType="WeirdosShopModel.Cart" />
+          <AssociationSet Name="FK_Product_Category" Association="WeirdosShopModel.FK_Product_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <EntitySet Name="Cart_detail" EntityType="WeirdosShopModel.Cart_detail" />
+          <AssociationSet Name="FK_Cart_detail_Cart1" Association="WeirdosShopModel.FK_Cart_detail_Cart1">
+            <End Role="Cart" EntitySet="Carts" />
+            <End Role="Cart_detail" EntitySet="Cart_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cart_detail_Product1" Association="WeirdosShopModel.FK_Cart_detail_Product1">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Cart_detail" EntitySet="Cart_detail" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Footer">
           <Key>
@@ -221,6 +310,67 @@
           <Property Name="order" Type="Int32" />
           <Property Name="datebegin" Type="DateTime" Precision="0" />
         </EntityType>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="datebegin" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Cart_detail" Relationship="WeirdosShopModel.FK_Cart_detail_Cart1" FromRole="Cart" ToRole="Cart_detail" />
+          <Property Name="namecus" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="addresscus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="phonenum" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Product_Category">
+          <End Type="WeirdosShopModel.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="WeirdosShopModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="categoryid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Cart_detail">
+          <Key>
+            <PropertyRef Name="cartid" />
+            <PropertyRef Name="productid" />
+          </Key>
+          <Property Name="cartid" Type="Int32" Nullable="false" />
+          <Property Name="productid" Type="Int32" Nullable="false" />
+          <Property Name="quantity" Type="Int32" />
+          <Property Name="sale" Type="Int32" />
+          <Property Name="total" Type="Double" />
+          <NavigationProperty Name="Cart" Relationship="WeirdosShopModel.FK_Cart_detail_Cart1" FromRole="Cart_detail" ToRole="Cart" />
+          <NavigationProperty Name="Product" Relationship="WeirdosShopModel.FK_Cart_detail_Product1" FromRole="Cart_detail" ToRole="Product" />
+          <Property Name="status" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_Cart_detail_Cart1">
+          <End Type="WeirdosShopModel.Cart" Role="Cart" Multiplicity="1" />
+          <End Type="WeirdosShopModel.Cart_detail" Role="Cart_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cart">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Cart_detail">
+              <PropertyRef Name="cartid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cart_detail_Product1">
+          <End Type="WeirdosShopModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="WeirdosShopModel.Cart_detail" Role="Cart_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Cart_detail">
+              <PropertyRef Name="productid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -328,6 +478,29 @@
                 <ScalarProperty Name="img" ColumnName="img" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Carts">
+            <EntityTypeMapping TypeName="WeirdosShopModel.Cart">
+              <MappingFragment StoreEntitySet="Cart">
+                <ScalarProperty Name="phonenum" ColumnName="phonenum" />
+                <ScalarProperty Name="addresscus" ColumnName="addresscus" />
+                <ScalarProperty Name="namecus" ColumnName="namecus" />
+                <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cart_detail">
+            <EntityTypeMapping TypeName="WeirdosShopModel.Cart_detail">
+              <MappingFragment StoreEntitySet="Cart_detail">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="sale" ColumnName="sale" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="productid" ColumnName="productid" />
+                <ScalarProperty Name="cartid" ColumnName="cartid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
