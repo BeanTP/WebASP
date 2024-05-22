@@ -22,11 +22,11 @@
                         <h1 class="product-item">@i.name.ToUpper()</h1>
                         @if (i.sale == 0)
                         {
-                            <h2 class="product-price">@total VNĐ</h2>
+                            <h2 class="product-price">@string.Format("{0:n0} VNĐ", total)</h2>
                         }
                         else
                         {
-                            <h2 class="product-price"><span class="product-sale">-@i.sale</span>% @total VNĐ</h2>
+                            <h2 class="product-price"><span class="product-sale">-@i.sale</span>% @string.Format("{0:n0} VNĐ", total)</h2>
                         }
                         <p class="product-description">
                            - @i.description
@@ -135,11 +135,11 @@ else
 
                 @if (i.sale == 0)
                 {
-                    <strong class="product-price">@total VNĐ</strong>
+                    <strong class="product-price">@string.Format("{0:n0} VNĐ", total)</strong>
                 }
                 else
                 {
-                    <strong class="product-price"><span class="product-sale">-@i.sale</span>% @total VNĐ</strong>
+                    <strong class="product-price"><span class="product-sale">-@i.sale</span>% @string.Format("{0:n0} VNĐ", total)</strong>
                 }
 
                 <span class="icon-cross">
