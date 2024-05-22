@@ -1,0 +1,46 @@
+﻿@model WeirdosShop.Models.Category
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_MyLayout.cshtml";
+}
+
+<div class="card">
+    <div class="d-flex justify-content-between">
+        <h5 class="card-header">Quản lý sản phẩm</h5>
+        <div class="card-header">
+            <div class="btn-group">
+                @Html.DropDownListFor(model => model.id, (SelectList)ViewBag.Category, "Tất cả sản phẩm", new { @class = "form-control", @id = "Category" })
+            </div>
+            <div class="btn-group">
+                <i class="bx bxs-plus-circle"></i> @Html.ActionLink("Tạo mới", "Create")
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive text-nowrap" id="getProduct"></div>
+</div>
+@section _Footer 
+{
+    <script>
+        $(document).ready(function () {
+            function getProduct() {
+                var CategoryId = $('#Category').val();
+                $.ajax({
+                    url: '@Url.Action("getProduct", "Products")',
+                    type: "GET",
+                    data: { id: CategoryId },
+                    success: function (data) {
+                        $("#getProduct").html(data);
+                    },
+                    error: function (data) {
+                        alert("something went wrong.");
+                    }
+                });
+            }
+            getProduct();
+            $("#Category").change(function () {
+                getProduct();
+            })
+        });
+    </script>
+}

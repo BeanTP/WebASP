@@ -95,7 +95,7 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name" Type="nvarchar(max)" />
     <Property Name="price" Type="float" />
-    <Property Name="description" Type="ntext" />
+    <Property Name="description" Type="nvarchar(max)" />
     <Property Name="meta" Type="nvarchar(max)" />
     <Property Name="size" Type="nvarchar" MaxLength="10" />
     <Property Name="color" Type="nvarchar" MaxLength="30" />

@@ -55,5 +55,14 @@ namespace WeirdosShop.Help
 
             return MvcHtmlString.Create(builder.ToString());
         }
+
+        public static string StripHtmlTags(string input)
+        {
+            if (string.IsNullOrWhiteSpace(input))
+                return string.Empty;
+
+            // Loại bỏ tất cả các thẻ HTML
+            return Regex.Replace(input, "<.*?>", string.Empty);
+        }
     }
 }
