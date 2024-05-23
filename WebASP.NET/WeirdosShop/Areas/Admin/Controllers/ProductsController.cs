@@ -137,13 +137,59 @@ namespace WeirdosShop.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,name,price,description,meta,size,color,hide,order,datebegin,categoryid,img,img1,img2,img3,sale")] Product product)
+        [ValidateInput(false)]
+        public ActionResult Edit([Bind(Include = "id,name,price,description,meta,size,color,hide,order,datebegin,categoryid,img,img1,img2,img3,sale")] Product product, HttpPostedFileBase img, HttpPostedFileBase img1, HttpPostedFileBase img2, HttpPostedFileBase img3)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(product).State = EntityState.Modified;
+                Product temp = db.Products.Find(product.id);
+                var filename = "";
+                if (img != null)
+                {
+                    filename = img.FileName;
+                    temp.img = filename;
+                }
+                else
+                {
+                    temp.img = "hahahehe.jpg";
+                }
+
+                if (img1 != null)
+                {
+                    filename = img1.FileName;
+                    temp.img1 = filename;
+                }
+
+                if (img2 != null)
+                {
+                    filename = img2.FileName;
+                    temp.img2 = filename;
+                }
+
+                if (img3 != null)
+                {
+                    filename = img.FileName;
+                    temp.img3 = filename;
+                }
+
+                if (temp.sale == null)
+                {
+                    temp.sale = 0;
+                }
+
+                temp.name = product.name;
+                temp.price = product.price;
+                temp.meta = Functions.ConvertToUnSign(product.meta);
+                temp.size = product.size;
+                temp.color = product.color;
+                temp.description = Functions.StripHtmlTags(product.description);
+                temp.datebegin = Convert.ToDateTime(DateTime.Now.ToLocalTime());
+                temp.hide = product.hide;
+                temp.order = product.order;
+                temp.categoryid = product.categoryid;
+                db.Entry(temp).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Products", new { id = product.categoryid });
             }
             ViewBag.categoryid = new SelectList(db.Categories, "id", "name", product.categoryid);
             return View(product);
