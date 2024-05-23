@@ -32,6 +32,7 @@
     <Property Name="productid" Type="int" Nullable="false" />
     <Property Name="quantity" Type="int" />
     <Property Name="sale" Type="int" />
+    <Property Name="unitprice" Type="float" />
     <Property Name="total" Type="float" />
     <Property Name="status" Type="int" />
   </EntityType>

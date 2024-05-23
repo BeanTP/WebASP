@@ -20,6 +20,7 @@ namespace WeirdosShop.Models
         public Nullable<int> sale { get; set; }
         public Nullable<double> total { get; set; }
         public Nullable<int> status { get; set; }
+        public Nullable<double> unitprice { get; set; }
     
         public virtual Cart Cart { get; set; }
         public virtual Product Product { get; set; }

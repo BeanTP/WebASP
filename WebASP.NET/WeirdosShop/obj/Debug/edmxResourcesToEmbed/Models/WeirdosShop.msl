@@ -119,6 +119,7 @@
     <EntitySetMapping Name="Cart_detail">
       <EntityTypeMapping TypeName="WeirdosShopModel.Cart_detail">
         <MappingFragment StoreEntitySet="Cart_detail">
+          <ScalarProperty Name="unitprice" ColumnName="unitprice" />
           <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="total" ColumnName="total" />
           <ScalarProperty Name="sale" ColumnName="sale" />
