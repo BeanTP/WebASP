@@ -3,7 +3,6 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_MyLayout.cshtml";
 }
-
 <div class="untree_co-section before-footer-section">
     <div class="container">
         <div class="row mb-5">
@@ -23,7 +22,7 @@
                                     <th class="product-quantity">Số lượng</th>
                                     <th class="product-price">Đơn giá</th>
                                     <th class="product-total">Tổng tiền</th>
-                                    <th class="product-remove">Remove</th>
+                                    <th class="product-remove">Xóa sản phẩm</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -35,6 +34,7 @@
                                         <td><input type="number" class="quantity-select" data-id="@item.product.id" value="@item.Quantity" /></td>
                                         <td>@string.Format("{0:n0} VNĐ", item.product.price.GetValueOrDefault(0))</td>
                                         <td>@string.Format("{0:n0} VNĐ", (item.product.price.GetValueOrDefault(0) * item.Quantity))</td>
+                                        <td><a href="#" class="deleteItemBtn" data-id="@item.product.id"><i class="bi bi-x-circle"></i></a></td>
                                     </tr>
                                 }
                             </tbody>
@@ -79,13 +79,13 @@
                                 <span class="text-black">Tổng hóa đơn</span>
                             </div>
                             <div class="col-md-6 text-right">
-                                <strong class="text-black">$230.00</strong>
+                                <strong class="text-black">10000</strong>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-12">
-                                <button id="checkoutBtn" class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='checkout.html'">Thanh toán</button>
+                                <button id="checkoutBtn" class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='/Cart/Checkout'">Thanh toán</button>
                             </div>
                         </div>
                     </div>

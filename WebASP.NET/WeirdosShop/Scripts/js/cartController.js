@@ -29,6 +29,33 @@
                 }
             });
         });
+
+        $('#removeBtn').off('click').on('click', function () {
+            $.ajax({
+                url: '/Cart/DeleteCart',
+                dataType: 'json',
+                type: 'POST',
+                success: function (res) {
+                    if (res.status == true) {
+                        window.location.href = '/cart';
+                    }
+                }
+            });
+        });
+        $('.deleteItemBtn').off('click').on('click', function (e) {
+            e.preventDefault();
+            $.ajax({
+                data: {id:$(this).data('id')},
+                url: '/Cart/DeleteItem',
+                dataType: 'json',
+                type: 'POST',
+                success: function (res) {
+                    if (res.status == true) {
+                        window.location.href = '/cart';
+                    }
+                }
+            });
+        });
     }
 }
 cart.init();

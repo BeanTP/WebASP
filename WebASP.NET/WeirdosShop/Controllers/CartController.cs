@@ -79,5 +79,27 @@ namespace WeirdosShop.Controllers
                 status = true
             });
         }
+        public JsonResult DeleteCart()
+        {
+            Session[CartSession] = null;
+            return Json(new
+            {
+                status = true
+            });
+        }
+        public JsonResult DeleteItem(long id)
+        {
+            var sessionCart = (List<CartItem>)Session[CartSession];
+            sessionCart.RemoveAll(x=>x.product.id == id);
+            Session[CartSession] = sessionCart;
+            return Json(new
+            {
+                status = true
+            });
+        }
+        public ActionResult Checkout()
+        {
+            return View();
+        }
     }
 }

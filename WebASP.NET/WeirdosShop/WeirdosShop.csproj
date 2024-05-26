@@ -1644,6 +1644,7 @@
     <Content Include="Views\Product\Detail.cshtml" />
     <Content Include="Views\Product\getSalePro.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\Checkout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
