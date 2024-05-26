@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WeirdosShop.Models;
+using System.Web.Script.Serialization;
 
 namespace WeirdosShop.Controllers
 {
@@ -43,7 +44,7 @@ namespace WeirdosShop.Controllers
                 else
                 {
                     var item = new CartItem();
-                    item.product.id = productId;
+                    item.product = products;
                     item.Quantity = quantity;
                     list.Add(item);
                 }
@@ -59,6 +60,24 @@ namespace WeirdosShop.Controllers
                 Session[CartSession] = list;
             }
             return RedirectToAction("Index");
+        }
+        public JsonResult UpdateItem(string cartModel)
+        {
+            var jsonCart = new JavaScriptSerializer().Deserialize<List<CartItem>>(cartModel);
+            var sessionCart = (List<CartItem>)Session[CartSession];
+            foreach(var item in sessionCart)
+            {
+                var jsonItem = jsonCart.SingleOrDefault(x => x.product.id == item.product.id);
+                if(jsonItem != null)
+                {
+                    item.Quantity = jsonItem.Quantity;
+                }
+            }
+            Session[CartSession] = sessionCart;
+            return Json(new
+            {
+                status = true
+            });
         }
     }
 }

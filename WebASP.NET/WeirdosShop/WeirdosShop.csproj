@@ -1614,6 +1614,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\js\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\js\cartController.js" />
     <Content Include="Scripts\js\custom.js" />
     <Content Include="Scripts\js\tiny-slider.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
