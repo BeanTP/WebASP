@@ -20,6 +20,7 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="namecus" Type="nvarchar" MaxLength="100" />
     <Property Name="addresscus" Type="nvarchar(max)" />
+    <Property Name="emailcus" Type="varchar(max)" />
     <Property Name="phonenum" Type="nchar" MaxLength="15" />
     <Property Name="datebegin" Type="smalldatetime" />
   </EntityType>
@@ -33,7 +34,6 @@
     <Property Name="quantity" Type="int" />
     <Property Name="sale" Type="int" />
     <Property Name="unitprice" Type="float" />
-    <Property Name="total" Type="float" />
     <Property Name="status" Type="int" />
   </EntityType>
   <EntityType Name="Category">

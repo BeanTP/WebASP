@@ -133,6 +133,7 @@
     <Property Name="namecus" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="addresscus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="phonenum" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+    <Property Name="emailcus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="FK_Product_Category">
     <End Type="WeirdosShopModel.Category" Role="Category" Multiplicity="0..1" />
@@ -155,7 +156,6 @@
     <Property Name="productid" Type="Int32" Nullable="false" />
     <Property Name="quantity" Type="Int32" />
     <Property Name="sale" Type="Int32" />
-    <Property Name="total" Type="Double" />
     <NavigationProperty Name="Cart" Relationship="WeirdosShopModel.FK_Cart_detail_Cart1" FromRole="Cart_detail" ToRole="Cart" />
     <NavigationProperty Name="Product" Relationship="WeirdosShopModel.FK_Cart_detail_Product1" FromRole="Cart_detail" ToRole="Product" />
     <Property Name="status" Type="Int32" />

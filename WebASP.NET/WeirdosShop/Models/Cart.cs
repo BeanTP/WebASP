@@ -25,6 +25,7 @@ namespace WeirdosShop.Models
         public string namecus { get; set; }
         public string addresscus { get; set; }
         public string phonenum { get; set; }
+        public string emailcus { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cart_detail> Cart_detail { get; set; }

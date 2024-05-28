@@ -1,4 +1,4 @@
-﻿
+﻿@model List<WeirdosShop.Models.CartItem>
 @{
     ViewBag.Title = "Checkout";
     Layout = "~/Views/Shared/_MyLayout.cshtml";
@@ -14,87 +14,59 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6 mb-5 mb-md-0">
-                <h2 class="h3 mb-3 text-black">Thông tin giao hàng</h2>
-                <div class="p-3 p-lg-5 border bg-white">
-                    
-                    <div class="form-group row">
-                        <div class="col-md-12">
-                            <label for="c_fname" class="text-black">Họ và tên <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="c_name" name="c_name">
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="col-md-10">
-                            <label for="c_lname" class="text-black">Email <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="c_email" name="c_email">
-                        </div>
-                        <div class="col-md-8">
-                            <label for="c_companyname" class="text-black">Số điện thoại <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="c_phonenum" name="c_phonenum">
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="col-md-12">
-                            <label for="c_address" class="text-black">Địa chỉ <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="c_address" name="c_address" placeholder="Nhập địa chỉ giao hàng...">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="c_order_notes" class="text-black">Ghi chú</label>
-                        <textarea name="c_order_notes" id="c_order_notes" cols="30" rows="5" class="form-control" placeholder="Viết ghi chú cho đơn hàng của bạn tại đây..."></textarea>
-                    </div>
-
-                </div>
-            </div>
             <div class="col-md-6">
 
                 <div class="row mb-5">
                     <div class="col-md-12">
-                        <h2 class="h3 mb-3 text-black">Mã khuyến mãi</h2>
-                        <div class="p-3 p-lg-5 border bg-white">
-
-                            <label for="c_code" class="text-black mb-3">Nếu bạn có mã khuyến mãi, hãy nhập vào đây!</label>
-                            <div class="input-group w-75 couponcode-wrap">
-                                <input type="text" class="form-control me-2" id="c_code" placeholder="Mã khuyến mãi" aria-label="Coupon Code" aria-describedby="button-addon2">
-                                <div class="input-group-append">
-                                    <button class="btn btn-black btn-sm" type="button" id="button-addon2">Áp dụng</button>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row mb-5">
-                    <div class="col-md-12">
                         <h2 class="h3 mb-3 text-black">Chi tiết đơn hàng</h2>
-                        <div class="p-3 p-lg-5 border bg-white">
+                        <div class="p-3 p-lg-6 border bg-white">
                             <table class="table site-block-order-table mb-5">
                                 <thead>
-                                    <th>Sản phẩm</th>
-                                    <th>Thành tiền</th>
+                                    <tr>
+                                        <th class="product-name">Tên sản phẩm</th>
+                                        <th class="product-thumbnail">Ảnh sản phẩm</th>
+                                        <th class="product-quantity">Số lượng</th>
+                                        <th class="product-price">Đơn giá</th>
+                                        <th class="product-total">Thành tiền</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Top Up T-Shirt <strong class="mx-2">x</strong>1</td>
-                                        <td>$250.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Polo Shirt <strong class="mx-2">x</strong>1</td>
-                                        <td>$100.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-black font-weight-bold"><strong>Cart Subtotal</strong></td>
-                                        <td class="text-black">$350.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-black font-weight-bold"><strong>Tổng hóa đơn</strong></td>
-                                        <td class="text-black font-weight-bold"><strong>$350.00</strong></td>
-                                    </tr>
+                                    @{ List<double> unitPrice = new List<double>();}
+                                    @foreach (var item in Model)
+                                    {
+                                        double totalUnit = 0;
+                                        <tr>
+                                            <td>@item.product.name.ToUpper()</td>
+                                            <td><img src="~/Content/images/@item.product.Category.name/@item.product.img" width="100" /></td>
+                                            <td><input type="number" class="quantity-select" data-id="@item.product.id" value="@item.Quantity" /></td>
+                                            @if (item.product.sale == 0)
+                                            {
+                                                <td>@string.Format("{0:n0} VNĐ", item.product.price.GetValueOrDefault(0))</td>
+                                                <td>@string.Format("{0:n0} VNĐ", (item.product.price.GetValueOrDefault(0) * item.Quantity))</td>
+                                                totalUnit = item.product.price.GetValueOrDefault(0) * item.Quantity;
+                                            }
+                                            else
+                                            {
+                                                <td>@string.Format("{0:n0} VNĐ", item.product.price.GetValueOrDefault(0) - item.product.price.GetValueOrDefault(0) * item.product.sale/100)</td>
+                                                <td>@string.Format("{0:n0} VNĐ", ((item.product.price.GetValueOrDefault(0) - item.product.price.GetValueOrDefault(0) * item.product.sale / 100) * item.Quantity))</td>
+                                                totalUnit = (double)(item.product.price.GetValueOrDefault(0) - item.product.price.GetValueOrDefault(0) * item.product.sale / 100) * item.Quantity;
+                                            }
+                                        </tr>
+                                        unitPrice.Add(totalUnit);
+                                    }
+                                    @{ double total = 0;}
+                                    @foreach (double price in unitPrice)
+                                    {
+                                        total += price;
+                                        ViewBag.total = total;
+                                    }
+                                    @if (ViewBag.total != 0 || ViewBag.total != null)
+                                    {
+                                        <tr>
+                                            <td colspan="2">TỔNG HÓA ĐƠN:</td>
+                                            <td colspan="3" class="text-end">@string.Format("{0:n0} VNĐ", ViewBag.total)</td>
+                                        </tr>
+                                    }
                                 </tbody>
                             </table>
 
@@ -108,14 +80,52 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <button class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='thankyou.html'">Đặt hàng</button>
-                            </div>
-
                         </div>
                     </div>
                 </div>
+            </div>
 
+            <div class="col-md-6 mb-5 mb-md-0">
+                <h2 class="h3 mb-3 text-black">Thông tin giao hàng</h2>
+                @using (Html.BeginForm("Checkout", "Cart", FormMethod.Post))
+                {
+                    <div class="p-3 p-lg-5 border bg-white">
+
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label for="c_name" class="text-black">Họ và tên<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="c_name" name="c_name">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-10">
+                                <label for="c_email" class="text-black">Email<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="c_email" name="c_email">
+                            </div>
+                            <div class="col-md-8">
+                                <label for="c_phonenum" class="text-black">Số điện thoại<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="c_phonenum" name="c_phonenum">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label for="c_address" class="text-black">Địa chỉ giao hàng<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="c_address" name="c_address" placeholder="Nhập địa chỉ giao hàng...">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="c_order_notes" class="text-black"></label>
+                            <textarea name="c_order_notes" id="c_order_notes" cols="30" rows="5" class="form-control" placeholder="Viết ghi chú cho đơn hàng của bạn tại đây..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <button class="btn btn-black btn-lg py-3 btn-block" type="submit">Đặt hàng</button>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
         <!-- </form> -->

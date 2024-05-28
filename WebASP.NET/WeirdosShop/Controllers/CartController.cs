@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using WeirdosShop.Models;
 using System.Web.Script.Serialization;
+using System.Diagnostics;
 
 namespace WeirdosShop.Controllers
 {
@@ -17,7 +18,7 @@ namespace WeirdosShop.Controllers
         {
             var cart = Session[CartSession];
             var list = new List<CartItem>();
-            if(cart != null)
+            if (cart != null)
             {
                 list = (List<CartItem>)cart;
             }
@@ -33,9 +34,9 @@ namespace WeirdosShop.Controllers
                 var list = (List<CartItem>)cart;
                 if (list.Exists(x => x.product.id == productId))
                 {
-                    foreach(var item in list)
+                    foreach (var item in list)
                     {
-                        if(item.product.id == productId)
+                        if (item.product.id == productId)
                         {
                             item.Quantity += quantity;
                         }
@@ -65,10 +66,10 @@ namespace WeirdosShop.Controllers
         {
             var jsonCart = new JavaScriptSerializer().Deserialize<List<CartItem>>(cartModel);
             var sessionCart = (List<CartItem>)Session[CartSession];
-            foreach(var item in sessionCart)
+            foreach (var item in sessionCart)
             {
                 var jsonItem = jsonCart.SingleOrDefault(x => x.product.id == item.product.id);
-                if(jsonItem != null)
+                if (jsonItem != null)
                 {
                     item.Quantity = jsonItem.Quantity;
                 }
@@ -90,14 +91,61 @@ namespace WeirdosShop.Controllers
         public JsonResult DeleteItem(long id)
         {
             var sessionCart = (List<CartItem>)Session[CartSession];
-            sessionCart.RemoveAll(x=>x.product.id == id);
+            sessionCart.RemoveAll(x => x.product.id == id);
             Session[CartSession] = sessionCart;
             return Json(new
             {
                 status = true
             });
         }
+        [HttpGet]
         public ActionResult Checkout()
+        {
+            var cart = Session[CartSession];
+            var list = new List<CartItem>();
+            if (cart != null)
+            {
+                list = (List<CartItem>)cart;
+            }
+            return View(list);
+        }
+        [HttpPost]
+        public ActionResult Checkout(string c_name, string c_email, string c_phonenum, string c_address)
+        {
+            var order = new Cart();
+            order.datebegin = DateTime.Now;
+            order.namecus = c_name;
+            order.addresscus = c_address;
+            order.emailcus = c_email;
+            order.phonenum = c_phonenum;
+            _db.Carts.Add(order);
+            _db.SaveChanges();
+
+            var orderId = order.id;
+            var cart = (List<CartItem>)Session[CartSession];
+            foreach (var item in cart)
+            {
+                var orderDetail = new Cart_detail();
+                orderDetail.cartid = orderId;
+                orderDetail.productid = item.product.id;
+                if(item.product.sale == 0)
+                {
+                    orderDetail.unitprice = item.product.price * item.Quantity;
+                }
+                else
+                {
+                    orderDetail.unitprice = (item.product.price - item.product.price * item.product.sale/100) * item.Quantity;
+                }
+                orderDetail.sale = item.product.sale;
+                orderDetail.quantity = item.Quantity;
+                _db.Cart_detail.Add(orderDetail);
+                _db.SaveChanges();
+            }
+
+            Session[CartSession] = null;
+            return Redirect("/success");
+        }
+        public ActionResult Success()
         {
             return View();
         }

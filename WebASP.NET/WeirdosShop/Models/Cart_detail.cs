@@ -18,7 +18,6 @@ namespace WeirdosShop.Models
         public int productid { get; set; }
         public Nullable<int> quantity { get; set; }
         public Nullable<int> sale { get; set; }
-        public Nullable<double> total { get; set; }
         public Nullable<int> status { get; set; }
         public Nullable<double> unitprice { get; set; }
     

@@ -108,6 +108,7 @@
     <EntitySetMapping Name="Carts">
       <EntityTypeMapping TypeName="WeirdosShopModel.Cart">
         <MappingFragment StoreEntitySet="Cart">
+          <ScalarProperty Name="emailcus" ColumnName="emailcus" />
           <ScalarProperty Name="phonenum" ColumnName="phonenum" />
           <ScalarProperty Name="addresscus" ColumnName="addresscus" />
           <ScalarProperty Name="namecus" ColumnName="namecus" />
@@ -121,7 +122,6 @@
         <MappingFragment StoreEntitySet="Cart_detail">
           <ScalarProperty Name="unitprice" ColumnName="unitprice" />
           <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="total" ColumnName="total" />
           <ScalarProperty Name="sale" ColumnName="sale" />
           <ScalarProperty Name="quantity" ColumnName="quantity" />
           <ScalarProperty Name="productid" ColumnName="productid" />

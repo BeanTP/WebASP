@@ -43,6 +43,18 @@ namespace WeirdosShop
                 defaults: new { controller = "Cart", action = "Index", id = UrlParameter.Optional },
                 namespaces: new[] { "WeirdosShop.Controllers" }
             );
+            routes.MapRoute(
+                name: "Checkout",
+                url: "Checkout",
+                defaults: new { controller = "Cart", action = "Checkout", id = UrlParameter.Optional },
+                namespaces: new[] { "WeirdosShop.Controllers" }
+            );
+            routes.MapRoute(
+                name: "Success Order",
+                url: "success",
+                defaults: new { controller = "Cart", action = "Success", id = UrlParameter.Optional },
+                namespaces: new[] { "WeirdosShop.Controllers" }
+            );
 
             routes.MapRoute(
                 name: "Add Cart",
