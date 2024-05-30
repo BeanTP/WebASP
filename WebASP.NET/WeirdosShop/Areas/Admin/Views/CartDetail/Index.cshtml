@@ -1,0 +1,113 @@
+﻿@model IEnumerable<WeirdosShop.Models.Cart_detail>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_MyLayout.cshtml";
+}
+
+
+<div class="card">
+    <div class="d-flex justify-content-between">
+        <h5 class="card-header">Quản lý đơn hàng</h5>
+    </div>
+    <div class="table-responsive text-nowrap">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayName("Mã đơn")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Tên khách hàng")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Ảnh sản phẩm")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Số lượng")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Đơn giá")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Khuyến mãi")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Tình trạng đơn hàng")
+                    </th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @{
+                    int? previousCartId = null;
+                    string previousCustomerName = null;
+                }
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @if (previousCartId != item.cartid)
+                            {
+                                @Html.DisplayFor(modelItem => item.cartid)
+                                previousCartId = item.cartid;
+                            }
+                        </td>
+                        <td>
+                            @if (previousCustomerName != item.Cart.namecus)
+                            {
+                                @Html.DisplayFor(modelItem => item.Cart.namecus)
+                                previousCustomerName = item.Cart.namecus;
+                            }
+                        </td>
+                        <td>
+                            <img src="~/Content/images/@item.Product.Category.name/@item.Product.img" width="100px" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.quantity)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.unitprice)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.sale)
+                        </td>
+                        <td>
+                            @if (item.status == 0)
+                            {
+                                <span class="badge rounded-pill bg-secondary">Chờ xác nhận</span>
+                            }
+                            else if (item.status == 1)
+                            {
+                                <span class="badge rounded-pill bg-warning">Đang thực hiện</span>
+                            }
+                            else if (item.status == 2)
+                            {
+                                <span class="badge rounded-pill bg-success">Đã hoàn thành</span>
+                            }
+                            else if (item.status == 3)
+                            {
+                                <span class="badge rounded-pill bg-danger">Đã hủy</span>
+                            }
+                        </td>
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <p class="dropdown-item">
+                                        <i class="bx bx-edit-alt me-1"></i> @Html.ActionLink("Chỉnh sửa", "Edit", new { cartid = item.Cart.id, productid = item.Product.id })
+                                    </p>
+                                    <p class="dropdown-item">
+                                        <i class="bx bx-detail me-1"></i> @Html.ActionLink("Chi tiết", "Details", new { cartid = item.Cart.id, productid = item.Product.id })
+                                    </p>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

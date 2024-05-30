@@ -1,0 +1,116 @@
+﻿@model WeirdosShop.Models.Cart_detail
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_MyLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xxl">
+        <div class="card mb-4">
+            <div class="card-header align-items-center justify-content-between">
+                <h4 class="mb-0">Chi tiết đơn hàng</h4>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="row mb-3">
+                        @Html.Label("Mã đơn hàng", htmlAttributes: new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-10">
+                            @Html.DisplayFor(model => model.Cart.id, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        @Html.Label("Tên khách hàng", htmlAttributes: new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-10">
+                            @Html.DisplayFor(model => model.Cart.namecus, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        @Html.Label("Email khách hàng", htmlAttributes: new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-10">
+                            @Html.DisplayFor(model => model.Cart.emailcus, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        @Html.Label("Số điện thoại khách hàng", htmlAttributes: new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-10">
+                            @Html.DisplayFor(model => model.Cart.phonenum, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        @Html.Label("Địa chỉ giao hàng", htmlAttributes: new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-10">
+                            @Html.DisplayFor(model => model.Cart.addresscus, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        @Html.Label("Ảnh sản phẩm", htmlAttributes: new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-10">
+                            <img src="~/Content/images/@Model.Product.Category.name/@Model.Product.img" width="100px" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        @Html.Label("Số lượng", htmlAttributes: new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-10">
+                            @Html.DisplayFor(model => model.quantity, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        @Html.Label("Đơn giá", htmlAttributes: new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-10">
+                            @Html.DisplayFor(model => model.unitprice, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        @Html.Label("Khuyến mãi", htmlAttributes: new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-10">
+                            @Html.DisplayFor(model => model.Product.sale, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        @Html.Label("Trạng thái đơn hàng", htmlAttributes: new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-10">
+                            @if (Model.status == 0)
+                            {
+                                <span class="badge rounded-pill bg-secondary">Chờ xác nhận</span>
+                            }
+                            else if (Model.status == 1)
+                            {
+                                <span class="badge rounded-pill bg-warning">Đang thực hiện</span>
+                            }
+                            else if (Model.status == 2)
+                            {
+                                <span class="badge rounded-pill bg-success">Đã hoàn thành</span>
+                            }
+                            else if (Model.status == 3)
+                            {
+                                <span class="badge rounded-pill bg-danger">Đã hủy</span>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        @Html.Label("Ngày đặt đơn", htmlAttributes: new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-10">
+                            @Html.DisplayFor(model => model.Cart.datebegin, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                    <div class="row justify-content-end">
+                        <div class="col-sm-0">
+                            @Html.ActionLink("Chỉnh sửa", "Edit", new { cartid = Model.cartid, productid = Model.productid }) | @Html.ActionLink("Quay lại", "Index")
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

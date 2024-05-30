@@ -138,6 +138,7 @@ namespace WeirdosShop.Controllers
                 }
                 orderDetail.sale = item.product.sale;
                 orderDetail.quantity = item.Quantity;
+                orderDetail.status = 0; //Xac nhan don hang
                 _db.Cart_detail.Add(orderDetail);
                 _db.SaveChanges();
             }

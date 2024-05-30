@@ -134,6 +134,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BannersController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CartDetailController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\FootersController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
@@ -1603,6 +1604,11 @@
     <Content Include="Areas\Admin\Views\Products\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Products\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Products\getProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\CartDetail\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CartDetail\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\CartDetail\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\CartDetail\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\CartDetail\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
