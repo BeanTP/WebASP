@@ -54,7 +54,7 @@
                             }
                         </td>
                         <td>
-                            @if (previousCustomerName != item.Cart.namecus)
+                            @if (previousCustomerName != item.Cart.namecus || (previousCustomerName == item.Cart.namecus && previousCartId != item.cartid))
                             {
                                 @Html.DisplayFor(modelItem => item.Cart.namecus)
                                 previousCustomerName = item.Cart.namecus;
@@ -67,7 +67,7 @@
                             @Html.DisplayFor(modelItem => item.quantity)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.unitprice)
+                            @string.Format("{0:n0} VNĐ", item.unitprice)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.sale)
