@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [WeirdosShop]    Script Date: 3/21/2024 10:50:19 PM ******/
+/****** Object:  Database [WeirdosShop]    Script Date: 6/1/2024 12:59:38 AM ******/
 CREATE DATABASE [WeirdosShop]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -84,7 +84,7 @@ ALTER DATABASE [WeirdosShop] SET QUERY_STORE (OPERATION_MODE = READ_WRITE, CLEAN
 GO
 USE [WeirdosShop]
 GO
-/****** Object:  Table [dbo].[Banner]    Script Date: 3/21/2024 10:50:19 PM ******/
+/****** Object:  Table [dbo].[Banner]    Script Date: 6/1/2024 12:59:38 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -104,7 +104,44 @@ CREATE TABLE [dbo].[Banner](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Category]    Script Date: 3/21/2024 10:50:19 PM ******/
+/****** Object:  Table [dbo].[Cart]    Script Date: 6/1/2024 12:59:38 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Cart](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[namecus] [nvarchar](100) NULL,
+	[addresscus] [nvarchar](max) NULL,
+	[emailcus] [varchar](max) NULL,
+	[phonenum] [nchar](15) NULL,
+	[datebegin] [smalldatetime] NULL,
+ CONSTRAINT [PK_Cart] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Cart_detail]    Script Date: 6/1/2024 12:59:38 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Cart_detail](
+	[cartid] [int] NOT NULL,
+	[productid] [int] NOT NULL,
+	[quantity] [int] NULL,
+	[sale] [int] NULL,
+	[unitprice] [float] NULL,
+	[status] [int] NULL,
+ CONSTRAINT [PK_Cart_detail] PRIMARY KEY CLUSTERED 
+(
+	[cartid] ASC,
+	[productid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Category]    Script Date: 6/1/2024 12:59:38 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -123,7 +160,7 @@ CREATE TABLE [dbo].[Category](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Footer]    Script Date: 3/21/2024 10:50:19 PM ******/
+/****** Object:  Table [dbo].[Footer]    Script Date: 6/1/2024 12:59:38 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -145,7 +182,7 @@ CREATE TABLE [dbo].[Footer](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Menu]    Script Date: 3/21/2024 10:50:19 PM ******/
+/****** Object:  Table [dbo].[Menu]    Script Date: 6/1/2024 12:59:38 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -164,7 +201,7 @@ CREATE TABLE [dbo].[Menu](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[News]    Script Date: 3/21/2024 10:50:19 PM ******/
+/****** Object:  Table [dbo].[News]    Script Date: 6/1/2024 12:59:38 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -185,7 +222,7 @@ CREATE TABLE [dbo].[News](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Product]    Script Date: 3/21/2024 10:50:19 PM ******/
+/****** Object:  Table [dbo].[Product]    Script Date: 6/1/2024 12:59:38 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -194,7 +231,7 @@ CREATE TABLE [dbo].[Product](
 	[id] [int] IDENTITY(1,1) NOT NULL,
 	[name] [nvarchar](max) NULL,
 	[price] [float] NULL,
-	[description] [ntext] NULL,
+	[description] [nvarchar](max) NULL,
 	[meta] [nvarchar](max) NULL,
 	[size] [nvarchar](10) NULL,
 	[color] [nvarchar](30) NULL,
@@ -213,17 +250,63 @@ CREATE TABLE [dbo].[Product](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
+/****** Object:  Table [dbo].[User]    Script Date: 6/1/2024 12:59:38 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[User](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[username] [varchar](50) NULL,
+	[password] [varchar](50) NULL,
+	[phonenum] [varchar](20) NULL,
+	[name] [nvarchar](max) NULL,
+	[email] [varchar](max) NULL,
+	[address] [nvarchar](max) NULL,
+	[role] [nchar](20) NULL,
+ CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
 SET IDENTITY_INSERT [dbo].[Banner] ON 
 GO
-INSERT [dbo].[Banner] ([id], [name], [img], [link], [meta], [hide], [order], [datebegin]) VALUES (1, N'banner1', N'slideshow_2.png', NULL, N'all', 1, 1, NULL)
+INSERT [dbo].[Banner] ([id], [name], [img], [link], [meta], [hide], [order], [datebegin]) VALUES (1, N'banner1', N'slideshow_2.png', NULL, N'all', 1, 1, CAST(N'2024-05-11T21:04:00' AS SmallDateTime))
 GO
 INSERT [dbo].[Banner] ([id], [name], [img], [link], [meta], [hide], [order], [datebegin]) VALUES (2, N'banner2', N'slideshow_3.png', NULL, N'all', 0, 2, NULL)
 GO
 SET IDENTITY_INSERT [dbo].[Banner] OFF
 GO
+SET IDENTITY_INSERT [dbo].[Cart] ON 
+GO
+INSERT [dbo].[Cart] ([id], [namecus], [addresscus], [emailcus], [phonenum], [datebegin]) VALUES (2, N'Nguyễn An', N'521, đường E, phường F, quận G, TPHCM', N'haha@gmail.com', N'9876543210     ', CAST(N'2024-05-31T01:16:00' AS SmallDateTime))
+GO
+INSERT [dbo].[Cart] ([id], [namecus], [addresscus], [emailcus], [phonenum], [datebegin]) VALUES (3, N'Nguyễn Hào Nam', N'12, đường A, phường B, quận C, TPHCM', N'123@gmail.com', N'0123456789     ', CAST(N'2024-05-29T01:13:00' AS SmallDateTime))
+GO
+INSERT [dbo].[Cart] ([id], [namecus], [addresscus], [emailcus], [phonenum], [datebegin]) VALUES (4, N'Nguyễn An', N'455, đường E, phường F, quận G, TPHCM', N'0123@gmail.com', N'4567890123     ', CAST(N'2024-05-31T14:15:00' AS SmallDateTime))
+GO
+SET IDENTITY_INSERT [dbo].[Cart] OFF
+GO
+INSERT [dbo].[Cart_detail] ([cartid], [productid], [quantity], [sale], [unitprice], [status]) VALUES (2, 5, 2, 20, 160000, 0)
+GO
+INSERT [dbo].[Cart_detail] ([cartid], [productid], [quantity], [sale], [unitprice], [status]) VALUES (2, 11, 1, 30, 70000, 0)
+GO
+INSERT [dbo].[Cart_detail] ([cartid], [productid], [quantity], [sale], [unitprice], [status]) VALUES (2, 26, 1, 30, 70000, 0)
+GO
+INSERT [dbo].[Cart_detail] ([cartid], [productid], [quantity], [sale], [unitprice], [status]) VALUES (3, 1, 1, 0, 100000, 0)
+GO
+INSERT [dbo].[Cart_detail] ([cartid], [productid], [quantity], [sale], [unitprice], [status]) VALUES (3, 5, 2, 20, 160000, 0)
+GO
+INSERT [dbo].[Cart_detail] ([cartid], [productid], [quantity], [sale], [unitprice], [status]) VALUES (3, 26, 2, 30, 140000, 0)
+GO
+INSERT [dbo].[Cart_detail] ([cartid], [productid], [quantity], [sale], [unitprice], [status]) VALUES (4, 2, 1, 0, 100000, 0)
+GO
+INSERT [dbo].[Cart_detail] ([cartid], [productid], [quantity], [sale], [unitprice], [status]) VALUES (4, 9, 2, 0, 200000, 0)
+GO
 SET IDENTITY_INSERT [dbo].[Category] ON 
 GO
-INSERT [dbo].[Category] ([id], [name], [link], [meta], [hide], [order], [datebegin]) VALUES (1, N'Tops', NULL, N'top', 1, 1, NULL)
+INSERT [dbo].[Category] ([id], [name], [link], [meta], [hide], [order], [datebegin]) VALUES (1, N'Tops', NULL, N'top', 1, 1, CAST(N'2024-05-22T00:04:00' AS SmallDateTime))
 GO
 INSERT [dbo].[Category] ([id], [name], [link], [meta], [hide], [order], [datebegin]) VALUES (2, N'Bottoms', NULL, N'bottom', 1, 2, NULL)
 GO
@@ -265,7 +348,7 @@ SET IDENTITY_INSERT [dbo].[Footer] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Menu] ON 
 GO
-INSERT [dbo].[Menu] ([id], [name], [link], [meta], [hide], [order], [datebegin]) VALUES (1, N'Home', NULL, N'home', 1, 1, NULL)
+INSERT [dbo].[Menu] ([id], [name], [link], [meta], [hide], [order], [datebegin]) VALUES (1, N'Home', NULL, N'home', 1, 1, CAST(N'2024-05-11T19:54:00' AS SmallDateTime))
 GO
 INSERT [dbo].[Menu] ([id], [name], [link], [meta], [hide], [order], [datebegin]) VALUES (2, N'Tops', NULL, N'products/top', 1, 3, NULL)
 GO
@@ -287,11 +370,11 @@ SET IDENTITY_INSERT [dbo].[Menu] OFF
 GO
 SET IDENTITY_INSERT [dbo].[News] ON 
 GO
-INSERT [dbo].[News] ([id], [name], [img], [description], [detail], [meta], [hide], [order], [datebegin]) VALUES (1, N'new collection 2022', N'slideshow_3.png', N'Hãy cùng đón chờ bộ sưu tập mới của nhà Weirdos', NULL, N'new-collection-2022', 1, 1, CAST(N'2022-03-04T00:00:00' AS SmallDateTime))
+INSERT [dbo].[News] ([id], [name], [img], [description], [detail], [meta], [hide], [order], [datebegin]) VALUES (1, N'new collection 2022', N'slideshow_3.png', N'Hãy cùng đón chờ bộ sưu tập mới của nhà Weirdos', NULL, N'new-collection-2022', 1, 1, CAST(N'2024-05-20T22:47:00' AS SmallDateTime))
 GO
 INSERT [dbo].[News] ([id], [name], [img], [description], [detail], [meta], [hide], [order], [datebegin]) VALUES (2, N'new session', N'slideshow_2.png', N'Cùng Weirdos đón chờ một mùa sản phẩm mới', NULL, N'new-session', 1, 2, CAST(N'2022-03-10T00:00:00' AS SmallDateTime))
 GO
-INSERT [dbo].[News] ([id], [name], [img], [description], [detail], [meta], [hide], [order], [datebegin]) VALUES (3, N'new year new job', N'thongbaotd.png', N'Nhanh chóng apply vào các vị trí của nhà Weirdos thôi nào bạn ơi!', NULL, N'recruitment', 1, 3, CAST(N'2023-09-10T00:00:00' AS SmallDateTime))
+INSERT [dbo].[News] ([id], [name], [img], [description], [detail], [meta], [hide], [order], [datebegin]) VALUES (3, N'new year new job', N'thongbaotd.png', N'Nhanh chóng apply vào các vị trí của nhà Weirdos thôi nào bạn ơi!', N'Vào ngày 15/9/2023 chúng mình có mở một đợt chiêu mộ thành viên trở thành người nhà của Weirdo. Các bạn nhanh tay đến của cửa hàng để được phỏng vấn trực tiếp hoặc các bạn có thể apply qua email của chúng mình nha!', N'new-year-new-job', 1, 3, CAST(N'2024-05-23T02:30:00' AS SmallDateTime))
 GO
 SET IDENTITY_INSERT [dbo].[News] OFF
 GO
@@ -365,7 +448,32 @@ INSERT [dbo].[Product] ([id], [name], [price], [description], [meta], [size], [c
 GO
 SET IDENTITY_INSERT [dbo].[Product] OFF
 GO
+SET IDENTITY_INSERT [dbo].[User] ON 
+GO
+INSERT [dbo].[User] ([id], [username], [password], [phonenum], [name], [email], [address], [role]) VALUES (1, N'admin01', N'e10adc3949ba59abbe56e057f20f883e', N'9876543210', N'Nguyễn Hào Nam', NULL, NULL, N'Admin               ')
+GO
+INSERT [dbo].[User] ([id], [username], [password], [phonenum], [name], [email], [address], [role]) VALUES (2, N'client01', N'827ccb0eea8a706c4c34a16891f84e7b', N'0123456789', N'Nguyễn Hào Nam', NULL, N'12, đường A, phường B, quận C, TPHCM', N'Client              ')
+GO
+INSERT [dbo].[User] ([id], [username], [password], [phonenum], [name], [email], [address], [role]) VALUES (3, N'client02', N'd6a9a933c8aafc51e55ac0662b6e4d4a', N'4567890123', N'Nguyễn An', N'0123@gmail.com', N'455, đường E, phường F, quận G, TPHCM', N'Client              ')
+GO
+SET IDENTITY_INSERT [dbo].[User] OFF
+GO
 ALTER TABLE [dbo].[Product] ADD  CONSTRAINT [DF_Product_sale]  DEFAULT ((0)) FOR [sale]
+GO
+ALTER TABLE [dbo].[Cart_detail]  WITH CHECK ADD  CONSTRAINT [FK_Cart_detail_Cart1] FOREIGN KEY([cartid])
+REFERENCES [dbo].[Cart] ([id])
+GO
+ALTER TABLE [dbo].[Cart_detail] CHECK CONSTRAINT [FK_Cart_detail_Cart1]
+GO
+ALTER TABLE [dbo].[Cart_detail]  WITH CHECK ADD  CONSTRAINT [FK_Cart_detail_Product1] FOREIGN KEY([productid])
+REFERENCES [dbo].[Product] ([id])
+GO
+ALTER TABLE [dbo].[Cart_detail] CHECK CONSTRAINT [FK_Cart_detail_Product1]
+GO
+ALTER TABLE [dbo].[Product]  WITH CHECK ADD  CONSTRAINT [FK_Product_Category] FOREIGN KEY([categoryid])
+REFERENCES [dbo].[Category] ([id])
+GO
+ALTER TABLE [dbo].[Product] CHECK CONSTRAINT [FK_Product_Category]
 GO
 USE [master]
 GO
