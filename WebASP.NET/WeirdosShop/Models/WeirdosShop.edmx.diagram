@@ -17,6 +17,7 @@
         <EntityTypeShape EntityType="WeirdosShopModel.Cart_detail" Width="1.5" PointX="9.625" PointY="5.75" />
         <AssociationConnector Association="WeirdosShopModel.FK_Cart_detail_Cart1" />
         <AssociationConnector Association="WeirdosShopModel.FK_Cart_detail_Product1" />
+        <EntityTypeShape EntityType="WeirdosShopModel.User" Width="1.5" PointX="3.375" PointY="8.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

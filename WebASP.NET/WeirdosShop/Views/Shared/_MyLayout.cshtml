@@ -35,8 +35,22 @@
                 @{Html.RenderAction("getMenu", "General");}
 
                 <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-                    <li><a class="nav-link" href="#"><img src="~/Content/images/user.svg"></a></li>
                     <li><a class="nav-link" href="/Cart"><img src="~/Content/images/cart.svg"></a></li>
+                    @if (Session["idUser"] != null)
+                    {
+                        <li><a class="nav-link" href="/User/Logout"><i class="bi bi-door-closed-fill"></i></a></li>
+
+                        string role = Session["Role"] != null ? Session["Role"].ToString().Trim() : string.Empty;
+                        string adminRole = "Admin";
+                        if (role.Equals(adminRole))
+                        {
+                            <li><a class="nav-link" href="/Admin">Trang Admin</a></li>
+                        }
+                    }
+                    else
+                    {
+                        <li><a class="nav-link" href="/User/Login"><img src="~/Content/images/user.svg"></a></li>
+                    }
                 </ul>
             </div>
         </div>

@@ -120,6 +120,19 @@
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="50" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
+    <Property Name="phonenum" Type="varchar" MaxLength="20" />
+    <Property Name="name" Type="nvarchar(max)" />
+    <Property Name="email" Type="varchar(max)" />
+    <Property Name="address" Type="nvarchar(max)" />
+    <Property Name="role" Type="nchar" MaxLength="20" />
+  </EntityType>
   <Association Name="FK_Cart_detail_Cart1">
     <End Role="Cart" Type="Self.Cart" Multiplicity="1" />
     <End Role="Cart_detail" Type="Self.Cart_detail" Multiplicity="*" />
@@ -166,6 +179,7 @@
     <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Cart_detail_Cart1" Association="Self.FK_Cart_detail_Cart1">
       <End Role="Cart" EntitySet="Cart" />
       <End Role="Cart_detail" EntitySet="Cart_detail" />
